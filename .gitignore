@@ -2,6 +2,7 @@
 desktop.ini
 .*
 !.gitignore
+!.clang-format
 
 /.*/
 !/.github/
