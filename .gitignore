@@ -1,0 +1,13 @@
+.ds_store
+desktop.ini
+.*
+!.gitignore
+
+/.*/
+!/.github/
+!/.vscode/
+
+/build/
+/working/
+
+**/*.pro.user
