@@ -1,4 +1,4 @@
-QT       += core gui multimedia multimediawidgets
+QT += core gui multimedia multimediawidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -18,18 +18,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-macOS {
+darwin {
     QMAKE_INFO_PLIST = static/macos/Info.plist
 }
-
-# Release:DESTDIR = release
-# Release:OBJECTS_DIR = release/.obj
-
-# Debug:DESTDIR = debug
-# Debug:OBJECTS_DIR = debug/.obj
-
-#DESTDIR = $$PWD/../build/$${BUILD_NAME}/$${BUILD_TYPE}_$${BUILD_PLATFORM}
-#OBJECTS_DIR = $${DESTDIR}/.objects
-#MOC_DIR = $${DESTDIR}/.moc
-#RCC_DIR = $${DESTDIR}/.rcc
-#UI_DIR = $${DESTDIR}/.ui

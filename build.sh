@@ -4,14 +4,48 @@ QMAKE=$QT_PATH/bin/qmake
 
 # PROJECT SETTINGS
 PROJECT_FILE=src/camera-testing.pro
+PLATFORMS=(darwin)
 
-if [ ! -d build/release ]; then
-    mkdir -p build/release
+# Determine operating system
+OS="unknown"
+
+if [[ $OSTYPE =~ ^darwin ]]; then
+    OS="darwin"
 fi
 
-cd build/release
-$QMAKE ../../$PROJECT_FILE -spec macx-clang CONFIG+=qtquickcompiler CONFIG+=macOS && /usr/bin/make qmake_all
-make -j8
+if [[ $OSTYPE =~ ^linux ]]; then
+    OS="linux"
+fi
 
-#cd /Users/george/university/modules/comp2811/group-project/camera-testing/camera-testing/build/release
-#make -j8
+# Check operating system is supported
+if [[ $OS == "unknown" ]]; then
+    echo "Failed: Unknown operating system"
+    exit 1
+fi
+
+# Perform a build for each platform
+for platform in ${PLATFORMS[@]}; do
+    if [ ! -d build/$platform/release ]; then
+        mkdir -p build/$platform/release
+    fi
+
+    cd build/$platform/release
+
+    $QMAKE ../../../$PROJECT_FILE -spec macx-clang CONFIG+=qtquickcompiler CONFIG+=$platform && /usr/bin/make qmake_all
+
+    if [[ $? -ne 0 ]]; then
+        echo "Failed: qmake failed to execute"
+        exit 1
+    fi
+
+    make -j8
+
+    if [[ $? -ne 0 ]]; then
+        echo "Failed: make failed to execute"
+        exit 1
+    fi
+
+    cd ../../../
+done
+
+exit 0
