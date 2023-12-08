@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/ui/icon">
+        <file alias="chevron-down">static/ui/icon/chevron-down.svg</file>
+    </qresource>
+    <qresource prefix="/ui/style">
+        <file alias="light">static/ui/style/light.qss</file>
+        <file alias="dark">static/ui/style/dark.qss</file>
+    </qresource>
+</RCC>

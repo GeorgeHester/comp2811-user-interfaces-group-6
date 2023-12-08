@@ -1,10 +1,25 @@
 {
     "C_Cpp.clang_format_path": "/opt/homebrew/bin/clang-format",
-    "C_Cpp.clang_format_style": "file:~/.format/.clang-format",
+    "C_Cpp.clang_format_style": "file:/Users/george/.format/.clang-format",
     "C_Cpp.default.includePath": [
         "~/Qt/5.15.2/clang_64/include",
         "~/Qt/5.15.2/clang_64/lib",
         "~/Qt/5.15.2/clang_64/include/**",
         "~/Qt/5.15.2/clang_64/lib/**"
     ],
+    "files.associations": {
+        "*.ccjs": "javascript",
+        ".clang-format": "plaintext",
+        "qboxlayout": "cpp",
+        "qjsondocument": "cpp",
+        "qjsonobject": "cpp",
+        "qvboxlayout": "cpp",
+        "qstring": "cpp",
+        "qrect": "cpp",
+        "qcamera": "cpp",
+        "qgraphicsview": "cpp",
+        "qgraphicsblureffect": "cpp",
+        "qgraphicscolorizeeffect": "cpp",
+        "qwidget": "cpp"
+    },
 }
