@@ -1,18 +1,18 @@
 QMainWindow#MainWindow {
-    background-color:#f2f2f2;
+    background-color:#000000;
 }
 
 QWidget#Header {
-    background-color:#f2f2f2;
+    background-color:#000000;
 }
 
 QComboBox {
-    color:#0d0d0d;
+    color:#ffffff;
     border-radius:8px;
     border-width:1px;
     border-style:solid;
-    border-color:#d9d9d9;
-    background-color:#e6e6e6;
+    border-color:#ffff00;
+    background-color:#000000;
     margin:0px;
     padding:0px;
     padding-right:8px;
@@ -24,7 +24,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image:url(:/ui/icon/chevron-down-light);
+    image:url(:/ui/icon/chevron-down-dark-high-contrast);
     width:14px;
     padding:0px;
     margin:0px;

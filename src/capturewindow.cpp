@@ -31,3 +31,12 @@ CaptureWindow::CaptureWindow()
         view->show();
     };
 };
+
+void
+CaptureWindow::paintEvent(QPaintEvent*)
+{
+    QStyleOption style_option;
+    style_option.init(this);
+    QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &style_option, &painter, this);
+};

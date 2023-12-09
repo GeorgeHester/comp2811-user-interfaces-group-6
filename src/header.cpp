@@ -1,7 +1,7 @@
 #include "header.h"
 
-Header::Header()
-  : QWidget()
+Header::Header(QWidget* parent)
+  : QWidget(parent)
 {
     this->setObjectName("Header");
     this->setFixedHeight(48);
@@ -12,16 +12,18 @@ Header::Header()
 
     this->setLayout(box_layout);
 
-    QFont font;
-    font.setFamily("Plus Jakarta Sans");
-    font.setWeight(QFont::Bold);
-    font.setPointSize(18);
-
     QLabel* logo_label = new QLabel();
-    logo_label->setFont(font);
-    logo_label->setText(QString::fromUtf8("VReal"));
+    logo_label->setObjectName("HeaderLogo");
+    logo_label->setText(QString("VReal"));
     logo_label->setAlignment(Qt::AlignCenter);
-    logo_label->setStyleSheet(QString::fromUtf8("QLabel{color:#F7EBE8}"));
-
     box_layout->addWidget(logo_label);
+};
+
+void
+Header::paintEvent(QPaintEvent*)
+{
+    QStyleOption style_option;
+    style_option.init(this);
+    QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &style_option, &painter, this);
 };

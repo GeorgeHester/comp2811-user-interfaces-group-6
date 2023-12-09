@@ -6,13 +6,18 @@
 #include <QString>
 #include <QBoxLayout>
 #include <QPushButton>
+#include <QStyleOption>
+#include <QPainter>
 
 class Header : public QWidget
 {
     Q_OBJECT
 
   public:
-    Header();
+    Header(QWidget* parent = nullptr);
+
+  protected:
+    void paintEvent(QPaintEvent*);
 };
 
 #endif // HEADER_H

@@ -7,6 +7,8 @@ PLATFORM=darwin
 
 QMAKE=$QT_PATH/bin/qmake
 
+killall VReal
+
 if [ -d build/$PLATFORM/release ]; then
     rm -rf build/$PLATFORM/release
 fi

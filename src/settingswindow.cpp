@@ -1,7 +1,14 @@
 #include "settingswindow.h"
 
-SettingsWindow::SettingsWindow()
+SettingsWindow::SettingsWindow(QWidget* parent)
+  : QWidget(parent)
 {
+
+    this->setObjectName(QString("SettingsWindow"));
+    this->setSizePolicy(QSizePolicy::Policy::Expanding,
+                        QSizePolicy::Policy::Expanding);
+    // this->setFixedWidth(this->parentWidget()->width());
+
     QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
     layout->setAlignment(Qt::AlignTop);
@@ -9,17 +16,14 @@ SettingsWindow::SettingsWindow()
     layout->setSpacing(0);
     this->setLayout(layout);
 
+    // QLabel* debug_label = new QLabel(this);
+    // debug_label->setText(QString::number(parent_geometry.height()));
+    // layout->addWidget(debug_label);
+
     Header* header = new Header();
     layout->addWidget(header);
 
-    QFont font;
-    font.setFamily("Plus Jakarta Sans");
-    font.setWeight(QFont::Weight::DemiBold);
-    font.setPointSize(14);
-
     this->display_mode_dropdown = new QComboBox(this);
-    this->display_mode_dropdown->setFont(font);
-    this->display_mode_dropdown->setFixedHeight(24);
     this->display_mode_dropdown->setObjectName(QString("DisplayModeDropdown"));
     this->display_mode_dropdown->addItem("Light", DisplayMode::Light);
     this->display_mode_dropdown->addItem("Dark", DisplayMode::Dark);
@@ -31,6 +35,12 @@ SettingsWindow::SettingsWindow()
       SettingsHandler::getValue(QString("display_mode"), DisplayMode::Dark)
         .toInt());
     layout->addWidget(display_mode_dropdown);
+    SettingsWindow::updateDisplayModeDropdownWidth();
+
+    this->connect(this->display_mode_dropdown,
+                  QOverload<int>::of(&QComboBox::currentIndexChanged),
+                  this,
+                  &SettingsWindow::updateDisplayModeDropdownWidth);
 
     this->connect(this->display_mode_dropdown,
                   QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -38,4 +48,20 @@ SettingsWindow::SettingsWindow()
                   {
                       emit displayModeUpdated((DisplayMode)index);
                   });
+};
+
+void
+SettingsWindow::updateDisplayModeDropdownWidth()
+{
+    this->display_mode_dropdown->setFixedWidth(
+      this->display_mode_dropdown->sizeHint().width());
+};
+
+void
+SettingsWindow::paintEvent(QPaintEvent*)
+{
+    QStyleOption style_option;
+    style_option.init(this);
+    QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &style_option, &painter, this);
 };

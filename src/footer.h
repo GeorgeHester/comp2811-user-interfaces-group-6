@@ -7,53 +7,55 @@
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QStackedLayout>
+#include <QStyleOption>
+#include <QPainter>
 
 class Footer : public QWidget
 {
     Q_OBJECT
 
   public:
-    QPushButton* feed_window_button = NULL;
-    QPushButton* capture_window_button = NULL;
-    QStackedLayout* stacked_layout = NULL;
-
-    Footer(QStackedLayout* stacked_layout)
+    Footer(QWidget* parent = nullptr)
+      : QWidget(parent)
     {
-        this->stacked_layout = stacked_layout;
-        this->feed_window_button = new QPushButton("Capture Window", this);
-        this->capture_window_button = new QPushButton("Settings Window", this);
-
         QBoxLayout* layout = new QBoxLayout(QBoxLayout::Direction::LeftToRight);
-
-        layout->addWidget(this->feed_window_button);
-        layout->addWidget(this->capture_window_button);
-
         this->setLayout(layout);
 
-        connect(this->feed_window_button,
+        QPushButton* capture_window_button =
+          new QPushButton("Capture Window", this);
+        layout->addWidget(capture_window_button);
+
+        QPushButton* settings_window_button =
+          new QPushButton("Settings Window", this);
+        layout->addWidget(settings_window_button);
+
+        connect(capture_window_button,
                 &QPushButton::clicked,
                 [this]()
                 {
-                    this->onButtonClicked(0, this->stacked_layout);
+                    emit selectedWindowUpdated(0);
                 });
 
-        connect(this->capture_window_button,
+        connect(settings_window_button,
                 &QPushButton::clicked,
                 [this]()
                 {
-                    this->onButtonClicked(1, this->stacked_layout);
+                    emit selectedWindowUpdated(1);
                 });
     };
 
-  protected:
-    void onButtonClicked(int index, QStackedLayout* layout)
-    {
-        if (layout == NULL) return;
-        if (layout->count() <= index) return;
-        if (index < 0) return;
+  signals:
+    void selectedWindowUpdated(int index);
 
-        layout->setCurrentIndex(index);
-    }
+  protected:
+    void paintEvent(QPaintEvent*)
+    {
+        QStyleOption style_option;
+        style_option.init(this);
+        QPainter painter(this);
+        style()->drawPrimitive(
+          QStyle::PE_Widget, &style_option, &painter, this);
+    };
 };
 
 #endif // FOOTER_H

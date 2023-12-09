@@ -4,7 +4,10 @@
 #include <QWidget>
 #include <QBoxLayout>
 #include <QStackedLayout>
+#include <QStackedWidget>
 #include <QMainWindow>
+#include <QStyleOption>
+#include <QPainter>
 
 #include "resource.h"
 #include "capturewindow.h"
@@ -17,7 +20,7 @@ class RootWindow : public QMainWindow
     Q_OBJECT
 
   public:
-    RootWindow();
+    RootWindow(QWidget* parent = nullptr);
     void updateDisplayMode(DisplayMode display_mode);
 
   private:

@@ -17,6 +17,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsColorizeEffect>
 #include <QCameraViewfinder>
+#include <QStyleOption>
+#include <QPainter>
 
 #include "header.h"
 
@@ -26,6 +28,9 @@ class CaptureWindow : public QWidget
 
   public:
     CaptureWindow();
+
+  protected:
+    void paintEvent(QPaintEvent*);
 };
 
 #endif // CAPTUREWINDOW_H

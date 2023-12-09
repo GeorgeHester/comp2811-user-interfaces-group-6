@@ -6,17 +6,38 @@ QWidget#Header {
     background-color:#0d0d0d;
 }
 
+QWidget#SettingsWindow {
+    background-color:#00ffff;
+}
+
+
+QWidget#HeaderLogo {
+    font-family:"Plus Jakarta Sans";
+    font-size:18em;
+    font-weight:700;
+    color:#f2f2f2;
+}
+
 QComboBox {
+    font-family:"Plus Jakarta Sans";
+    font-size:14em;
+    font-weight:500;
     color:#f2f2f2;
     border-radius:8px;
-    border-width:1px;
+    border-width:2px;
     border-style:solid;
     border-color:#262626;
     background-color:#191919;
-    margin:0px;
-    padding:0px;
-    padding-right:8px;
+    margin:12px;
     padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QComboBox:open {
+    border-color:#6fa1fe;
 }
 
 QComboBox::drop-down {
@@ -24,9 +45,30 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image:url(:/ui/icon/chevron-down);
+    image:url(:/ui/icon/chevron-down-dark);
     width:14px;
     padding:0px;
     margin:0px;
-    margin-right:8px;
+    padding-right:8px;
+}
+
+QComboBox QAbstractItemView {
+
+}
+
+
+
+
+
+
+
+
+QComboBox::drop-down {
+    border: 1px solid #a0a0a0;
+    background-color: #ffffff;
+    selection-background-color: #c0c0c0;
+    color: #000000;
+    margin: 0;
+    top: auto;
+    bottom: -1px;
 }
