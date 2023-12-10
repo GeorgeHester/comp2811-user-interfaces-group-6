@@ -20,6 +20,10 @@
         "qgraphicsview": "cpp",
         "qgraphicsblureffect": "cpp",
         "qgraphicscolorizeeffect": "cpp",
-        "qwidget": "cpp"
+        "qwidget": "cpp",
+        "qpainter": "cpp",
+        "qgraphicsrectitem": "cpp",
+        "qcamerainfo": "cpp",
+        "qabstractvideosurface": "cpp"
     },
 }

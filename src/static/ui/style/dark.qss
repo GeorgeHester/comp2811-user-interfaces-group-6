@@ -189,3 +189,10 @@ QPushButton:pressed {
 QPushButton#SettingsWindowResetButton {
     margin-top:24px;
 }
+
+QFrame#CaptureWindowViewfinderFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+}

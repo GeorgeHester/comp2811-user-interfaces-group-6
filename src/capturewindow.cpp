@@ -3,35 +3,74 @@
 CaptureWindow::CaptureWindow(QWidget* parent)
   : QWidget(parent)
 {
-    QBoxLayout* box_layout =
+    QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
-    box_layout->setMargin(0);
-    box_layout->setSpacing(0);
-    this->setLayout(box_layout);
+    layout->setAlignment(Qt::AlignTop);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    this->setLayout(layout);
 
-    Header* header = new Header(this);
-    box_layout->addWidget(header);
+    this->header = new Header(this);
+    layout->addWidget(this->header);
 
-    QList<QCameraInfo> camera_info_list = QCameraInfo::availableCameras();
+    this->viewfinder_frame = new QFrame(this);
+    this->viewfinder_frame->setObjectName("CaptureWindowViewfinderFrame");
+    layout->addWidget(viewfinder_frame);
 
-    if (camera_info_list.length() > 0)
-    {
-        QCamera* camera = new QCamera(camera_info_list.at(0));
+    QBoxLayout* viewfinder_frame_layout = new QBoxLayout(
+      QBoxLayout::Direction::TopToBottom, this->viewfinder_frame);
+    viewfinder_frame_layout->setAlignment(Qt::AlignTop);
+    viewfinder_frame_layout->setMargin(0);
+    viewfinder_frame_layout->setSpacing(0);
+    this->viewfinder_frame->setLayout(viewfinder_frame_layout);
 
-        QGraphicsScene* scene = new QGraphicsScene();
-        QGraphicsView* view = new QGraphicsView();
-        view->setScene(scene);
+    this->viewfinder = new QCameraViewfinder(this);
+    this->viewfinder->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
+    viewfinder_frame_layout->addWidget(this->viewfinder);
 
-        QCameraViewfinder* viewfinder = new QCameraViewfinder();
-        viewfinder->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
-        camera->setViewfinder(viewfinder);
+    QCamera* camera = new QCamera(QCamera::FrontFace, this);
+    camera->setViewfinder(this->viewfinder);
 
-        view->setViewport(viewfinder);
-        box_layout->addWidget(view);
+    camera->start();
+    this->paintCameraViewfinder(this->width(), this->height());
+};
 
-        camera->start();
-        view->show();
-    };
+void
+CaptureWindow::paintCameraViewfinder(int width, int height)
+{
+    // Get the new sizes
+    int frame_margin = 12;
+    int frame_border = 2;
+    int frame_radius = 16;
+    int header_height = this->header->height();
+
+    // Update the geometry for the viewfinder frame view which contains the
+    // viewfinder
+    this->viewfinder_frame->setGeometry(
+      frame_margin,
+      this->header->height() + frame_margin,
+      width - 24,
+      std::min((width - 24) * 5 / 4, height - header_height - 24));
+
+    this->viewfinder->setGeometry(
+      frame_border,
+      frame_border,
+      width - 24 - (frame_border * 2),
+      std::min((width - 24 - (frame_border * 2)) * 5 / 4,
+               height - header_height - 24 - (frame_border * 2)));
+
+    QPainterPath* viewfinder_painter_path = new QPainterPath();
+    viewfinder_painter_path->addRoundedRect(
+      this->viewfinder->rect(), frame_radius, frame_radius);
+    this->viewfinder->setMask(
+      viewfinder_painter_path->toFillPolygon().toPolygon());
+};
+
+void
+CaptureWindow::resizeEvent(QResizeEvent* event)
+{
+    this->paintCameraViewfinder(event->size().width(), event->size().height());
+    QWidget::resizeEvent(event);
 };
 
 void
@@ -40,5 +79,6 @@ CaptureWindow::paintEvent(QPaintEvent*)
     QStyleOption style_option;
     style_option.init(this);
     QPainter painter(this);
+    // painter.setRenderHint(QPainter::RenderHint::HighQualityAntialiasing);
     style()->drawPrimitive(QStyle::PE_Widget, &style_option, &painter, this);
 };
