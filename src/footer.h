@@ -48,7 +48,7 @@ class Footer : public QWidget
     void selectedWindowUpdated(int index);
 
   protected:
-    void paintEvent(QPaintEvent*)
+    void paintEvent(QPaintEvent*) override
     {
         QStyleOption style_option;
         style_option.init(this);

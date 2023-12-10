@@ -28,7 +28,7 @@ RootWindow::RootWindow(QWidget* parent)
     QStackedWidget* stacked_widget = new QStackedWidget(this);
 
     // Create the capture window widget
-    CaptureWindow* capture_window = new CaptureWindow;
+    CaptureWindow* capture_window = new CaptureWindow(this);
     stacked_widget->addWidget(capture_window);
 
     // Create the settings window widget
@@ -41,6 +41,11 @@ RootWindow::RootWindow(QWidget* parent)
     // Add the base items to the central layout
     central_layout->addWidget(stacked_widget);
     central_layout->addWidget(footer);
+
+    // this->label = new QLabel(this);
+    // this->label->setText(QString("Test"));
+    // this->label->setStyleSheet(QString("QLabel{color:#ffffff;}"));
+    // central_layout->addWidget(this->label);
 
     // Set the main windows central widget and object name
     this->setCentralWidget(central_widget);
@@ -66,6 +71,14 @@ RootWindow::RootWindow(QWidget* parent)
             {
                 this->updateDisplayMode(display_mode);
             });
+
+    // Connect the font size scale updated listener
+    connect(settings_window,
+            &SettingsWindow::fontSizeScaleUpdated,
+            [=](double scale)
+            {
+                this->updateFontSizeScale(scale);
+            });
 };
 
 void
@@ -90,4 +103,72 @@ RootWindow::updateDisplayMode(DisplayMode display_mode)
             this->setStyleSheet(this->qss_dark_high_contrast_mode);
             break;
     };
+
+    this->updateFontSizeScale(
+      SettingsHandler::getValue("font_size_scale", 1.0).toDouble());
+};
+
+void
+RootWindow::updateFontSizeScale(double scale)
+{
+    // Set the new font size scale in the user settings
+    SettingsHandler::setValue("font_size_scale", scale);
+
+    QString* copy_style_sheet;
+    QString* original_style_sheet;
+
+    switch (
+      (DisplayMode)SettingsHandler::getValue("display_mode", DisplayMode::Dark)
+        .toInt())
+    {
+        case Light:
+            copy_style_sheet = new QString(this->qss_light_mode);
+            original_style_sheet = new QString(this->qss_light_mode);
+            break;
+        case Dark:
+            copy_style_sheet = new QString(this->qss_dark_mode);
+            original_style_sheet = new QString(this->qss_dark_mode);
+            break;
+        case LightHighContrast:
+            copy_style_sheet = new QString(this->qss_light_high_contrast_mode);
+            original_style_sheet =
+              new QString(this->qss_light_high_contrast_mode);
+
+            break;
+        case DarkHighContrast:
+            copy_style_sheet = new QString(this->qss_dark_high_contrast_mode);
+            original_style_sheet =
+              new QString(this->qss_dark_high_contrast_mode);
+            break;
+    };
+
+    qsizetype start_index;
+    qsizetype end_index;
+    qsizetype copy_offset = 0;
+    qsizetype original_offset = 0;
+
+    while ((start_index = copy_style_sheet->indexOf(QString("font-size:"),
+                                                    copy_offset)) != -1)
+    {
+        if ((end_index =
+               copy_style_sheet->indexOf(QString("pt;"), copy_offset)) == -1)
+            continue;
+
+        QString font_size_string = copy_style_sheet->mid(
+          start_index + QString("font-size:").length(),
+          end_index - start_index - QString("font-size:").length());
+        QString new_font_size_string =
+          QString::number((int)round(font_size_string.toInt() * scale));
+
+        original_style_sheet->replace(original_offset + start_index +
+                                        QString("font-size:").length(),
+                                      font_size_string.length(),
+                                      new_font_size_string);
+
+        original_offset +=
+          new_font_size_string.length() - font_size_string.length();
+        copy_offset = end_index + QString("pt;").length();
+    };
+
+    this->setStyleSheet(*original_style_sheet);
 };

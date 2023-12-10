@@ -3,11 +3,7 @@
 SettingsWindow::SettingsWindow(QWidget* parent)
   : QWidget(parent)
 {
-
     this->setObjectName(QString("SettingsWindow"));
-    this->setSizePolicy(QSizePolicy::Policy::Expanding,
-                        QSizePolicy::Policy::Expanding);
-    // this->setFixedWidth(this->parentWidget()->width());
 
     QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
@@ -16,45 +12,80 @@ SettingsWindow::SettingsWindow(QWidget* parent)
     layout->setSpacing(0);
     this->setLayout(layout);
 
-    // QLabel* debug_label = new QLabel(this);
-    // debug_label->setText(QString::number(parent_geometry.height()));
-    // layout->addWidget(debug_label);
-
-    Header* header = new Header();
+    Header* header = new Header(this);
     layout->addWidget(header);
 
-    this->display_mode_dropdown = new QComboBox(this);
-    this->display_mode_dropdown->setObjectName(QString("DisplayModeDropdown"));
-    this->display_mode_dropdown->addItem("Light", DisplayMode::Light);
-    this->display_mode_dropdown->addItem("Dark", DisplayMode::Dark);
-    this->display_mode_dropdown->addItem("Light High Contrast",
-                                         DisplayMode::LightHighContrast);
-    this->display_mode_dropdown->addItem("Dark High Contrast",
-                                         DisplayMode::DarkHighContrast);
-    this->display_mode_dropdown->setCurrentIndex(
+    QLabel* display_mode_combo_box_label = new QLabel(this);
+    display_mode_combo_box_label->setObjectName(
+      QString("SettingsWindowItemLabel"));
+    display_mode_combo_box_label->setText(QString("Display Mode"));
+    layout->addWidget(display_mode_combo_box_label);
+
+    QComboBox* display_mode_combo_box = new QComboBox(this);
+    display_mode_combo_box->setObjectName(QString("DisplayModeDropdown"));
+    display_mode_combo_box->addItem("Light", DisplayMode::Light);
+    display_mode_combo_box->addItem("Dark", DisplayMode::Dark);
+    display_mode_combo_box->addItem("Light High Contrast",
+                                    DisplayMode::LightHighContrast);
+    display_mode_combo_box->addItem("Dark High Contrast",
+                                    DisplayMode::DarkHighContrast);
+    display_mode_combo_box->setCurrentIndex(
       SettingsHandler::getValue(QString("display_mode"), DisplayMode::Dark)
         .toInt());
-    layout->addWidget(display_mode_dropdown);
-    SettingsWindow::updateDisplayModeDropdownWidth();
+    layout->addWidget(display_mode_combo_box);
 
-    this->connect(this->display_mode_dropdown,
-                  QOverload<int>::of(&QComboBox::currentIndexChanged),
-                  this,
-                  &SettingsWindow::updateDisplayModeDropdownWidth);
+    QLabel* font_size_scale_slider_label = new QLabel(this);
+    font_size_scale_slider_label->setObjectName(
+      QString("SettingsWindowItemLabel"));
+    font_size_scale_slider_label->setText(QString("Font Size Scale"));
+    layout->addWidget(font_size_scale_slider_label);
 
-    this->connect(this->display_mode_dropdown,
+    QSlider* font_size_scale_slider =
+      new QSlider(Qt::Orientation::Horizontal, this);
+    font_size_scale_slider->setRange(5, 20);
+    font_size_scale_slider->setSingleStep(1);
+    font_size_scale_slider->setValue(static_cast<int>(
+      SettingsHandler::getValue("font_size_scale", 1.0).toDouble() * 10.0));
+    layout->addWidget(font_size_scale_slider);
+
+    QPushButton* reset_button = new QPushButton("Reset", this);
+    reset_button->setObjectName(QString("SettingsWindowResetButton"));
+    layout->addWidget(reset_button);
+
+    this->connect(display_mode_combo_box,
                   QOverload<int>::of(&QComboBox::currentIndexChanged),
                   [=](int index)
                   {
                       emit displayModeUpdated((DisplayMode)index);
                   });
+
+    this->connect(font_size_scale_slider,
+                  &QSlider::valueChanged,
+                  [=](int value)
+                  {
+                      emit fontSizeScaleUpdated(static_cast<double>(value) /
+                                                10.0);
+                  });
+
+    this->connect(reset_button,
+                  &QPushButton::clicked,
+                  [this, display_mode_combo_box, font_size_scale_slider]()
+                  {
+                      // Reset the user interface
+                      display_mode_combo_box->setCurrentIndex(
+                        DisplayMode::Dark);
+                      font_size_scale_slider->setValue(10);
+
+                      // Update the values globally
+                      emit displayModeUpdated(DisplayMode::Dark);
+                      emit fontSizeScaleUpdated(1.0);
+                  });
 };
 
 void
-SettingsWindow::updateDisplayModeDropdownWidth()
+SettingsWindow::resizeEvent(QResizeEvent* event)
 {
-    this->display_mode_dropdown->setFixedWidth(
-      this->display_mode_dropdown->sizeHint().width());
+    QWidget::resizeEvent(event);
 };
 
 void

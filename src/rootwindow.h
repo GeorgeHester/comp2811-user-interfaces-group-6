@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QStyleOption>
 #include <QPainter>
+#include <QtGlobal>
 
 #include "resource.h"
 #include "capturewindow.h"
@@ -21,13 +22,17 @@ class RootWindow : public QMainWindow
 
   public:
     RootWindow(QWidget* parent = nullptr);
-    void updateDisplayMode(DisplayMode display_mode);
+    QLabel* label;
 
   private:
     QString qss_light_mode;
     QString qss_dark_mode;
     QString qss_light_high_contrast_mode;
     QString qss_dark_high_contrast_mode;
+
+  protected:
+    void updateDisplayMode(DisplayMode display_mode);
+    void updateFontSizeScale(double scale);
 };
 
 #endif // ROOTWINDOW_H

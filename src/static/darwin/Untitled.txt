@@ -1,0 +1,154 @@
+QComboBox {
+    font-family:"Plus Jakarta Sans";
+    font-size:14em;
+    font-weight:500;
+    color:#f2f2f2;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin:12px;
+    padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QComboBox:open {
+    border-color:#6fa1fe;
+}
+
+QComboBox::drop-down {
+    border:0px;
+}
+
+QComboBox::down-arrow {
+    image:url(:/ui/icon/chevron-down-dark);
+    width:14px;
+    padding:0px;
+    margin:0px;
+    padding-right:8px;
+}
+
+QComboBox QAbstractItemView {
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color: #191919;
+    margin:0px;
+    padding:8px;
+    outline:none;
+}
+
+QComboBox QAbstractItemView::item {
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#191919;
+    background-color: #191919;
+    margin:0px;
+    padding:4px;
+    outline:none;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color:#333333;
+}
+
+QComboBox QAbstractItemView::item:selected {
+    border-color:#6fa1fe;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////
+
+
+QListView {
+    font-family:"Plus Jakarta Sans";
+    font-size:14em;
+    font-weight:500;
+    color:#f2f2f2;
+    border-radius:8px;
+    border-width:1px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin:0px;
+    padding:8px;
+    outline:none;
+}
+
+QListView::item {
+    border-radius:8px;
+    border-width:1px;
+    border-style:solid;
+    background-color:#191919;
+    margin:0px;
+    padding:4px;
+    outline:none;
+}
+
+QListView::item::hover {
+
+    background-color:#333333;
+}
+
+QListView::item:selected {
+    border-width:1px;
+    border-style:solid;
+    border-color:#6fa1fe;
+}
+
+QAbstractItemView {
+    outline:none;
+}
+
+QComboBox {
+    font-family:"Plus Jakarta Sans";
+    font-size:14em;
+    font-weight:500;
+    color:#f2f2f2;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin:12px;
+    padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QComboBox:open {
+    border-color:#6fa1fe;
+}
+
+QComboBox::drop-down {
+    border:0px;
+}
+
+QComboBox::down-arrow {
+    image:url(:/ui/icon/chevron-down-dark);
+    width:14px;
+    padding:0px;
+    margin:0px;
+    padding-right:8px;
+}

@@ -8,6 +8,8 @@
 #include <QRect>
 #include <QStyleOption>
 #include <QPainter>
+#include <QResizeEvent>
+#include <QSlider>
 
 #include "header.h"
 #include "settingshandler.h"
@@ -17,21 +19,17 @@
 class SettingsWindow : public QWidget
 {
     Q_OBJECT
-    Q_DECLARE_PRIVATE(QWidget)
 
   public:
     SettingsWindow(QWidget* parent = nullptr);
 
-    QComboBox* display_mode_dropdown;
-
   signals:
     void displayModeUpdated(const DisplayMode& display_mode);
-
-  private:
-    void updateDisplayModeDropdownWidth();
+    void fontSizeScaleUpdated(const double& scale);
 
   protected:
-    void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event) override;
+    void paintEvent(QPaintEvent* event) override;
 };
 
 #endif // SETTINGSWINDOW_H

@@ -27,10 +27,10 @@ class CaptureWindow : public QWidget
     Q_OBJECT
 
   public:
-    CaptureWindow();
+    CaptureWindow(QWidget* parent = nullptr);
 
   protected:
-    void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent*) override;
 };
 
 #endif // CAPTUREWINDOW_H

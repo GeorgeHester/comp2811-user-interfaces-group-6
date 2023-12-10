@@ -17,7 +17,7 @@ class Header : public QWidget
     Header(QWidget* parent = nullptr);
 
   protected:
-    void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent*) override;
 };
 
 #endif // HEADER_H

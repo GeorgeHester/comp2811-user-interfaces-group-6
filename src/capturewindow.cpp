@@ -1,13 +1,15 @@
 #include "capturewindow.h"
 
-CaptureWindow::CaptureWindow()
+CaptureWindow::CaptureWindow(QWidget* parent)
+  : QWidget(parent)
 {
-    QBoxLayout* box_layout = new QBoxLayout(QBoxLayout::Direction::TopToBottom);
+    QBoxLayout* box_layout =
+      new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
     box_layout->setMargin(0);
     box_layout->setSpacing(0);
     this->setLayout(box_layout);
 
-    Header* header = new Header();
+    Header* header = new Header(this);
     box_layout->addWidget(header);
 
     QList<QCameraInfo> camera_info_list = QCameraInfo::availableCameras();

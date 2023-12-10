@@ -4,19 +4,19 @@ Header::Header(QWidget* parent)
   : QWidget(parent)
 {
     this->setObjectName("Header");
-    this->setFixedHeight(48);
 
-    QBoxLayout* box_layout = new QBoxLayout(QBoxLayout::Direction::LeftToRight);
-    box_layout->setMargin(0);
-    box_layout->setSpacing(0);
+    QBoxLayout* layout =
+      new QBoxLayout(QBoxLayout::Direction::LeftToRight, this);
+    layout->setMargin(0);
+    layout->setSpacing(0);
 
-    this->setLayout(box_layout);
-
-    QLabel* logo_label = new QLabel();
+    QLabel* logo_label = new QLabel(this);
     logo_label->setObjectName("HeaderLogo");
     logo_label->setText(QString("VReal"));
     logo_label->setAlignment(Qt::AlignCenter);
-    box_layout->addWidget(logo_label);
+    layout->addWidget(logo_label);
+
+    this->setLayout(layout);
 };
 
 void
