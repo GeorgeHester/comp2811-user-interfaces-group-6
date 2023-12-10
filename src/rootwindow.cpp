@@ -35,6 +35,10 @@ RootWindow::RootWindow(QWidget* parent)
     SettingsWindow* settings_window = new SettingsWindow(this);
     stacked_widget->addWidget(settings_window);
 
+    // Create the feed window widget
+    FeedWindow* feed_window = new FeedWindow(this);
+    stacked_widget->addWidget(feed_window);
+
     // Create the debug footer which allows for updating the stacked widget
     Footer* footer = new Footer(this);
 

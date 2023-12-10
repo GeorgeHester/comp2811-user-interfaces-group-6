@@ -13,6 +13,7 @@
 #include "resource.h"
 #include "capturewindow.h"
 #include "settingswindow.h"
+#include "feedwindow.h"
 #include "displaymode.h"
 #include "footer.h"
 

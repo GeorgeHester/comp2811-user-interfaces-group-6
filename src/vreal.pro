@@ -10,7 +10,8 @@ SOURCES += \
     header.cpp \
     rootwindow.cpp \
     capturewindow.cpp \
-    settingswindow.cpp
+    settingswindow.cpp \
+    feedwindow.cpp \
 
 HEADERS += \
     resource.h \
@@ -20,6 +21,7 @@ HEADERS += \
     rootwindow.h \
     capturewindow.h \
     settingswindow.h \
+    feedwindow.h \
     displaymode.h
 
 RESOURCES += \
