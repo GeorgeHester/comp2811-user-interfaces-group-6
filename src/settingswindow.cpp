@@ -12,7 +12,7 @@ SettingsWindow::SettingsWindow(QWidget* parent)
     layout->setSpacing(0);
     this->setLayout(layout);
 
-    Header* header = new Header(this);
+    Header* header = new Header("Back", this);
     layout->addWidget(header);
 
     QLabel* display_mode_combo_box_label = new QLabel(this);
@@ -80,6 +80,14 @@ SettingsWindow::SettingsWindow(QWidget* parent)
                       emit displayModeUpdated(DisplayMode::Dark);
                       emit fontSizeScaleUpdated(1.0);
                   });
+
+    // Connect handler for header navigation clicked
+    connect(header,
+            &Header::rightButtonClicked,
+            [this]()
+            {
+                emit currentWindowUpdated(Window::Unknown, Window::Settings);
+            });
 };
 
 void

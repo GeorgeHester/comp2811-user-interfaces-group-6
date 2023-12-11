@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/ui/style">
+        <file alias="dark">static/ui/style/dark.qss</file>
+        <file alias="light">static/ui/style/light.qss</file>
+        <file alias="dark-high-contrast">static/ui/style/dark-high-contrast.qss</file>
+        <file alias="light-high-contrast">static/ui/style/light-high-contrast.qss</file>
+    </qresource>
+</RCC>

@@ -186,6 +186,11 @@ QPushButton:pressed {
     border-color:#6fa1fe;
 }
 
+QPushButton:flat {
+	background-color:transparent;
+	border-color:transparent;
+}
+
 QPushButton#SettingsWindowResetButton {
     margin-top:24px;
 }
@@ -195,4 +200,72 @@ QFrame#CaptureWindowViewfinderFrame {
     border-width:2px;
     border-style:solid;
     border-color:#262626;
+}
+
+QScrollArea#FeedWindowScrollArea {
+    margin:0px;
+    margin-bottom:12px;
+    margin-right:6px;
+}
+
+QScrollArea#FeedWindowScrollArea { background: transparent; }
+QScrollArea#FeedWindowScrollArea > QWidget > QWidget { background: transparent; }
+
+QFrame#FeedWindowScrollAreaFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#333333;
+    margin-left:12px;
+    margin-top:12px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
+QScrollBar:vertical {
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    width:8px;
+    margin-left:0px;
+    margin-top:6px;
+    margin-right:0px;
+    margin-bottom:6px;
+    border-radius:4px;
+}
+
+QScrollBar::handle:vertical {
+    background-color:#333333;
+    min-height:24px;
+    border-radius:2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color:#4d4d4d;
+}
+
+QScrollBar::handle:vertical:pressed {
+    background-color:#666666;
+}
+
+QScrollBar::up-arrow:vertical
+{
+    background:none;
+}
+
+QScrollBar::down-arrow:vertical
+{
+    background:none;
+}
+
+QScrollBar::add-page:vertical
+{
+    background: none;
+}
+
+QScrollBar::sub-page:vertical
+{
+    background: none;
 }

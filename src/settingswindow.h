@@ -14,7 +14,7 @@
 #include "header.h"
 #include "settingshandler.h"
 #include "displaymode.h"
-#include "rootwindow.h"
+#include "window.h"
 
 class SettingsWindow : public QWidget
 {
@@ -24,6 +24,7 @@ class SettingsWindow : public QWidget
     SettingsWindow(QWidget* parent = nullptr);
 
   signals:
+    void currentWindowUpdated(Window to, Window from);
     void displayModeUpdated(const DisplayMode& display_mode);
     void fontSizeScaleUpdated(const double& scale);
 

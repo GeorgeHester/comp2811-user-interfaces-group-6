@@ -11,6 +11,7 @@
 #include <QtGlobal>
 
 #include "resource.h"
+#include "window.h"
 #include "capturewindow.h"
 #include "settingswindow.h"
 #include "feedwindow.h"
@@ -26,12 +27,18 @@ class RootWindow : public QMainWindow
     QLabel* label;
 
   private:
+    Window previous_window;
+    QStackedWidget* stacked_widget;
+    CaptureWindow* capture_window;
+    SettingsWindow* settings_window;
+    FeedWindow* feed_window;
     QString qss_light_mode;
     QString qss_dark_mode;
     QString qss_light_high_contrast_mode;
     QString qss_dark_high_contrast_mode;
 
   protected:
+    void updateCurrentWindow(Window to, Window from);
     void updateDisplayMode(DisplayMode display_mode);
     void updateFontSizeScale(double scale);
 };

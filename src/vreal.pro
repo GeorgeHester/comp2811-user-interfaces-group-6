@@ -11,7 +11,7 @@ SOURCES += \
     rootwindow.cpp \
     capturewindow.cpp \
     settingswindow.cpp \
-    feedwindow.cpp \
+    feedwindow.cpp
 
 HEADERS += \
     resource.h \
@@ -22,11 +22,14 @@ HEADERS += \
     capturewindow.h \
     settingswindow.h \
     feedwindow.h \
-    displaymode.h
+    displaymode.h \
+    window.h
 
 RESOURCES += \
     font.qrc \
-    ui.qrc
+    icon.qrc \
+    style.qrc \
+    video.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

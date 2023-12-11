@@ -29,6 +29,9 @@ class Footer : public QWidget
           new QPushButton("Settings Window", this);
         layout->addWidget(settings_window_button);
 
+        QPushButton* feed_window_button = new QPushButton("Feed Window", this);
+        layout->addWidget(feed_window_button);
+
         connect(capture_window_button,
                 &QPushButton::clicked,
                 [this]()
@@ -41,6 +44,13 @@ class Footer : public QWidget
                 [this]()
                 {
                     emit selectedWindowUpdated(1);
+                });
+
+        connect(feed_window_button,
+                &QPushButton::clicked,
+                [this]()
+                {
+                    emit selectedWindowUpdated(2);
                 });
     };
 

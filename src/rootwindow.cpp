@@ -4,7 +4,7 @@ RootWindow::RootWindow(QWidget* parent)
   : QMainWindow(parent)
 {
     // Load in the font resource file
-    Resource::import(QString("PlusJakartaSans Variable"));
+    Resource::import(QString(":/PlusJakartaSans Variable"));
 
     // Load in the different display mode style sheets
     this->qss_light_mode = Resource::load(QString(":/ui/style/light"));
@@ -25,25 +25,25 @@ RootWindow::RootWindow(QWidget* parent)
     central_widget->setLayout(central_layout);
 
     // Create the stacked widget which will store the different windows
-    QStackedWidget* stacked_widget = new QStackedWidget(this);
+    this->stacked_widget = new QStackedWidget(this);
 
     // Create the capture window widget
-    CaptureWindow* capture_window = new CaptureWindow(this);
-    stacked_widget->addWidget(capture_window);
+    this->capture_window = new CaptureWindow(this);
+    this->stacked_widget->addWidget(this->capture_window);
 
     // Create the settings window widget
-    SettingsWindow* settings_window = new SettingsWindow(this);
-    stacked_widget->addWidget(settings_window);
+    this->settings_window = new SettingsWindow(this);
+    this->stacked_widget->addWidget(this->settings_window);
 
     // Create the feed window widget
-    FeedWindow* feed_window = new FeedWindow(this);
-    stacked_widget->addWidget(feed_window);
+    this->feed_window = new FeedWindow(this);
+    this->stacked_widget->addWidget(this->feed_window);
 
     // Create the debug footer which allows for updating the stacked widget
     Footer* footer = new Footer(this);
 
     // Add the base items to the central layout
-    central_layout->addWidget(stacked_widget);
+    central_layout->addWidget(this->stacked_widget);
     central_layout->addWidget(footer);
 
     // this->label = new QLabel(this);
@@ -65,24 +65,54 @@ RootWindow::RootWindow(QWidget* parent)
             &Footer::selectedWindowUpdated,
             [=](int index)
             {
-                stacked_widget->setCurrentIndex(index);
+                this->stacked_widget->setCurrentIndex(index);
             });
 
     // Connect the display mode updated listener
-    connect(settings_window,
+    connect(this->settings_window,
             &SettingsWindow::displayModeUpdated,
-            [=](DisplayMode display_mode)
+            [this](DisplayMode display_mode)
             {
                 this->updateDisplayMode(display_mode);
             });
 
     // Connect the font size scale updated listener
-    connect(settings_window,
+    connect(this->settings_window,
             &SettingsWindow::fontSizeScaleUpdated,
-            [=](double scale)
+            [this](double scale)
             {
                 this->updateFontSizeScale(scale);
             });
+
+    // Connect for the window updated from feed window
+    connect(this->feed_window,
+            &FeedWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
+
+    // Connect for the window updated from settings window
+    connect(this->settings_window,
+            &SettingsWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
+};
+
+void
+RootWindow::updateCurrentWindow(Window to, Window from)
+{
+    if (to == Window::Unknown)
+    {
+        this->stacked_widget->setCurrentIndex(this->previous_window);
+        this->previous_window = from;
+        return;
+    };
+
+    this->stacked_widget->setCurrentIndex(to);
+    this->previous_window = from;
 };
 
 void

@@ -14,7 +14,7 @@ class Resource
         QFile file(id);
 
         if (!file.open(QIODevice::ReadOnly))
-            qDebug() << "Failed to import resource file";
+            qDebug() << "Failed to import resource file" << id;
     };
 
     static QString load(QString id)
@@ -22,7 +22,7 @@ class Resource
         QFile file(id);
 
         if (!file.open(QFile::ReadOnly | QFile::Text))
-            qDebug() << "Failed to load resource file";
+            qDebug() << "Failed to load resource file" << id;
 
         QTextStream text_stream(&file);
 

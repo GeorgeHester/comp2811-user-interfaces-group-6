@@ -24,6 +24,7 @@
         "qpainter": "cpp",
         "qgraphicsrectitem": "cpp",
         "qcamerainfo": "cpp",
-        "qabstractvideosurface": "cpp"
+        "qabstractvideosurface": "cpp",
+        "qgraphicsvideoitem": "cpp"
     },
 }
