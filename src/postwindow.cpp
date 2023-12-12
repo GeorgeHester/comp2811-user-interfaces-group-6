@@ -59,7 +59,8 @@ PostWindow::PostWindow(QWidget* parent)
             &QPushButton::clicked,
             [this]()
             {
-                emit currentWindowUpdated(Window::Feed, Window::Capture);
+                Store::feed_mode = FeedMode::PostPost;
+                emit currentWindowUpdated(Window::FeedPost, Window::Capture);
             });
 };
 

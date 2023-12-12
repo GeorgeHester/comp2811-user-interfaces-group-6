@@ -20,6 +20,7 @@ typedef struct Post
     QString username;
     QString post_url;
     QString post_time;
+    QString post_caption;
 } Post;
 
 #endif // POST_H

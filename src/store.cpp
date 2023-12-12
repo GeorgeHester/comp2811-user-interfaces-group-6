@@ -29,11 +29,13 @@ Store::loadPosts()
         QString username = post_object["username"].toString();
         QString post_url = post_object["post_url"].toString();
         QString post_time = post_object["post_time"].toString();
+        QString post_caption = post_object["post_caption"].toString();
 
         Post post;
         post.username = username;
         post.post_url = post_url;
         post.post_time = post_time;
+        post.post_caption = post_caption;
 
         Store::posts.append(post);
     };

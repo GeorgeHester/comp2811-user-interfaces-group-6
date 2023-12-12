@@ -3,6 +3,8 @@
 RootWindow::RootWindow(QWidget* parent)
   : QMainWindow(parent)
 {
+    this->setObjectName(QString("MainWindow"));
+
     // Load in the font resource file
     Resource::import(QString(":/PlusJakartaSans Variable"));
 
@@ -19,56 +21,43 @@ RootWindow::RootWindow(QWidget* parent)
       (DisplayMode)SettingsHandler::getValue("display_mode", DisplayMode::Dark)
         .toInt());
 
-    // Set the current font size
-    this->updateFontSizeScale(
-      SettingsHandler::getValue("font_size_scale", 1.0).toDouble());
+    // Create the central widget to store the layout and main window content
+    QWidget* central_widget = new QWidget(this);
+    this->setCentralWidget(central_widget);
 
     // Create the central layout for the main window
     QBoxLayout* central_layout =
-      new QBoxLayout(QBoxLayout::Direction::TopToBottom);
+      new QBoxLayout(QBoxLayout::Direction::TopToBottom, central_widget);
     central_layout->setMargin(0);
     central_layout->setSpacing(0);
 
-    // Create the central widget to store the layout and main window content
-    QWidget* central_widget = new QWidget(this);
-    central_widget->setLayout(central_layout);
-
     // Create the stacked widget which will store the different windows
-    this->stacked_widget = new QStackedWidget(this);
+    this->stacked_widget = new QStackedWidget(central_widget);
+    central_layout->addWidget(this->stacked_widget);
 
     // Create the capture window widget
-    this->capture_window = new CaptureWindow(this);
+    this->capture_window = new CaptureWindow(this->stacked_widget);
     this->stacked_widget->addWidget(this->capture_window);
 
     // Create the settings window widget
-    this->settings_window = new SettingsWindow(this);
+    this->settings_window = new SettingsWindow(this->stacked_widget);
     this->stacked_widget->addWidget(this->settings_window);
 
-    // Create the feed window widget
-    this->feed_window = new FeedWindow(this);
-    this->stacked_widget->addWidget(this->feed_window);
+    // Create the feed pre window widget
+    this->feed_pre_window = new FeedPreWindow(this->stacked_widget);
+    this->stacked_widget->addWidget(this->feed_pre_window);
+
+    // Create the feed post window widget
+    this->feed_post_window = new FeedPostWindow(this->stacked_widget);
+    this->stacked_widget->addWidget(this->feed_post_window);
 
     // Create the post window widget
-    this->post_window = new PostWindow(this);
+    this->post_window = new PostWindow(this->stacked_widget);
     this->stacked_widget->addWidget(this->post_window);
 
-    // Add the base items to the central layout
-    central_layout->addWidget(this->stacked_widget);
-
-    // Set the main windows central widget and object name
-    this->setCentralWidget(central_widget);
-    this->setObjectName(QString("MainWindow"));
-
     // Set the current window
-    this->stacked_widget->setCurrentIndex(Window::Feed);
-
-    // Connect the window updated listener
-    // connect(footer,
-    //        &Footer::selectedWindowUpdated,
-    //        [=](int index)
-    //        {
-    //            this->stacked_widget->setCurrentIndex(index);
-    //        });
+    // this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
+    this->updateCurrentWindow(Window::FeedPost, Window::Unknown);
 
     // Connect the display mode updated listener
     connect(this->settings_window,
@@ -86,9 +75,17 @@ RootWindow::RootWindow(QWidget* parent)
                 this->updateFontSizeScale(scale);
             });
 
-    // Connect for the window updated from feed window
-    connect(this->feed_window,
-            &FeedWindow::currentWindowUpdated,
+    // Connect for the window updated from feed pre window
+    connect(this->feed_pre_window,
+            &FeedPreWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
+
+    // Connect for the window updated from feed post window
+    connect(this->feed_post_window,
+            &FeedPostWindow::currentWindowUpdated,
             [this](Window to, Window from)
             {
                 this->updateCurrentWindow(to, from);
@@ -117,10 +114,6 @@ RootWindow::RootWindow(QWidget* parent)
             {
                 this->updateCurrentWindow(to, from);
             });
-
-    // Store::post_file_name =
-    // "file:///Users/george/university/modules/comp2811/vreal/working/test.mp4";
-    // this->updateCurrentWindow(Window::PostScreen, Window::Settings);
 };
 
 void
@@ -128,17 +121,27 @@ RootWindow::updateCurrentWindow(Window to, Window from)
 {
     if (to == Window::Unknown)
     {
+        this->refreshWindow(this->previous_window);
         this->stacked_widget->setCurrentIndex(this->previous_window);
-        if (to == Window::PostScreen) this->post_window->refresh();
-        this->stacked_widget->currentWidget()->update();
         this->previous_window = from;
         return;
     };
 
+    this->refreshWindow(to);
     this->stacked_widget->setCurrentIndex(to);
-    if (to == Window::PostScreen) this->post_window->refresh();
-    this->stacked_widget->currentWidget()->update();
     this->previous_window = from;
+};
+
+void
+RootWindow::refreshWindow(Window window)
+{
+    switch (window)
+    {
+        case Window::PostScreen:
+            this->post_window->refresh();
+        default:
+            break;
+    };
 };
 
 void

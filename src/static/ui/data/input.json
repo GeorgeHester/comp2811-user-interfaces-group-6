@@ -3,22 +3,26 @@
         {
             "username": "Louis Pawn",
             "post_url": "static/video/post-01.mp4",
-            "post_time": "30 Minutes ago"
+            "post_time": "30 Minutes ago",
+            "post_caption": "It's the harry potter film"
         },
         {
             "username": "Emil Waites",
             "post_url": "static/video/post-02.mp4",
-            "post_time": "43 Minutes ago"
+            "post_time": "43 Minutes ago",
+            "post_caption": "My friend emil"
         },
         {
             "username": "Jackie Scran",
             "post_url": "static/video/post-03.mp4",
-            "post_time": "2 Hours ago"
+            "post_time": "2 Hours ago",
+            "post_caption": "Other harry potter film"
         },
         {
             "username": "Lukasz Wilton",
             "post_url": "static/video/post-04.mp4",
-            "post_time": "7 Hours ago"
+            "post_time": "7 Hours ago",
+            "post_caption": "No he's my friend"
         }
     ]
 }

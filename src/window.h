@@ -5,7 +5,8 @@ enum Window
 {
     Capture,
     Settings,
-    Feed,
+    FeedPre,
+    FeedPost,
     PostScreen,
     Unknown
 };

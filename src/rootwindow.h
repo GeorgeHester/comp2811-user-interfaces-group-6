@@ -15,7 +15,8 @@
 #include "capturewindow.h"
 #include "settingswindow.h"
 #include "postwindow.h"
-#include "feedwindow.h"
+#include "feedprewindow.h"
+#include "feedpostwindow.h"
 #include "displaymode.h"
 #include "footer.h"
 
@@ -32,7 +33,8 @@ class RootWindow : public QMainWindow
     QStackedWidget* stacked_widget;
     CaptureWindow* capture_window;
     SettingsWindow* settings_window;
-    FeedWindow* feed_window;
+    FeedPreWindow* feed_pre_window;
+    FeedPostWindow* feed_post_window;
     PostWindow* post_window;
     QString qss_light_mode;
     QString qss_dark_mode;
@@ -40,6 +42,7 @@ class RootWindow : public QMainWindow
     QString qss_dark_high_contrast_mode;
 
   protected:
+    void refreshWindow(Window window);
     void updateCurrentWindow(Window to, Window from);
     void updateDisplayMode(DisplayMode display_mode);
     void updateFontSizeScale(double scale);

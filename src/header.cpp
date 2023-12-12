@@ -9,7 +9,6 @@ Header::Header(QWidget* parent)
       new QBoxLayout(QBoxLayout::Direction::LeftToRight, this);
     layout->setMargin(0);
     layout->setSpacing(0);
-    this->setLayout(layout);
 
     QLabel* logo_label = new QLabel(this);
     logo_label->setObjectName("HeaderLogo");
@@ -27,7 +26,6 @@ Header::Header(QString right_button_text, QWidget* parent)
       new QBoxLayout(QBoxLayout::Direction::LeftToRight, this);
     layout->setMargin(0);
     layout->setSpacing(0);
-    this->setLayout(layout);
 
     QSpacerItem* spacer_left =
       new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -53,12 +51,6 @@ Header::Header(QString right_button_text, QWidget* parent)
             {
                 emit rightButtonClicked();
             });
-};
-
-void
-Header::resizeEvent(QResizeEvent* event)
-{
-    QWidget::resizeEvent(event);
 };
 
 void

@@ -237,6 +237,17 @@ QLabel#FeedWindowScrollAreaPostHeaderLabel {
     margin:0px;
 }
 
+QLabel#FeedWindowScrollAreaPostCaptionLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#f2f2f2;
+    margin-left:12px;
+    margin-top:6px;
+    margin-right:12px;
+    margin-bottom:12px;
+}
+
 QScrollBar:vertical {
     border-width:2px;
     border-style:solid;

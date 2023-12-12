@@ -9,6 +9,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QSpacerItem>
+#include <QPaintEvent>
 
 class Header : public QWidget
 {
@@ -23,7 +24,6 @@ class Header : public QWidget
 
   protected:
     void paintEvent(QPaintEvent*) override;
-    void resizeEvent(QResizeEvent* event) override;
 };
 
 #endif // HEADER_H

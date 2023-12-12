@@ -80,7 +80,7 @@ CaptureWindow::CaptureWindow(QWidget* parent)
             &Header::rightButtonClicked,
             [this]()
             {
-                emit currentWindowUpdated(Window::Feed, Window::Capture);
+                emit currentWindowUpdated(Window::FeedPre, Window::Capture);
             });
 
     // Connect handler for each iteration of the timer

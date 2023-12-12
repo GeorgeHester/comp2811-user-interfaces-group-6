@@ -1,5 +1,5 @@
-#ifndef FEEDWINDOW_H
-#define FEEDWINDOW_H
+#ifndef FEEDPOSTWINDOW_H
+#define FEEDPOSTWINDOW_H
 
 #include <QWidget>
 #include <QStyle>
@@ -23,12 +23,12 @@
 #include "post.h"
 #include "store.h"
 
-class FeedWindow : public QWidget
+class FeedPostWindow : public QWidget
 {
     Q_OBJECT
 
   public:
-    FeedWindow(QWidget* parent = nullptr);
+    FeedPostWindow(QWidget* parent = nullptr);
 
   private:
     Header* header;
@@ -36,7 +36,6 @@ class FeedWindow : public QWidget
     QWidget* scroll_area_widget;
     QBoxLayout* scroll_area_layout;
     QVector<PostUi> posts;
-    QVector<PostBlank> blanks;
     QVector<QFrame*> frames;
     QVector<QVideoWidget*> frame_video_widgets;
 
@@ -47,7 +46,6 @@ class FeedWindow : public QWidget
     void paintPosts();
     void resizeScrollArea(int window_width, int window_height);
     void resizePosts(int parent_width, int parent_height);
-    void resizePostBlanks(int parent_width, int parent_height);
     void resizeFrameVideoWidget(int parent_width,
                                 int parent_height,
                                 QFrame* frame,
@@ -56,4 +54,4 @@ class FeedWindow : public QWidget
     void resizeEvent(QResizeEvent* event) override;
 };
 
-#endif // FEEDWINDOW_H
+#endif // FEEDPOSTWINDOW_H

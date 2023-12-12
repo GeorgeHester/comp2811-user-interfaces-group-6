@@ -11,7 +11,8 @@ SOURCES += \
     rootwindow.cpp \
     capturewindow.cpp \
     settingswindow.cpp \
-    feedwindow.cpp \
+    feedprewindow.cpp \
+    feedpostwindow.cpp \
     postwindow.cpp
 
 HEADERS += \
@@ -25,7 +26,8 @@ HEADERS += \
     capturewindow.h \
     settingswindow.h \
     postwindow.h \
-    feedwindow.h \
+    feedprewindow.h \
+    feedpostwindow.h \
     displaymode.h
 
 RESOURCES += \
