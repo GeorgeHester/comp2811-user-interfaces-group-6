@@ -191,6 +191,12 @@ QPushButton:flat {
 	border-color:transparent;
 }
 
+QPushButton:disabled {
+    background-color:#333333;
+    border-color:#333333;
+    color:#808080;
+}
+
 QPushButton#SettingsWindowResetButton {
     margin-top:24px;
 }
@@ -200,6 +206,11 @@ QFrame#CaptureWindowViewfinderFrame {
     border-width:2px;
     border-style:solid;
     border-color:#262626;
+    background-color:#191919;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:12px;
 }
 
 QScrollArea#FeedWindowScrollArea {
@@ -216,11 +227,26 @@ QFrame#FeedWindowScrollAreaFrame {
     border-width:2px;
     border-style:solid;
     border-color:#262626;
-    background-color:#333333;
+    background-color:#191919;
     margin-left:12px;
-    margin-top:12px;
+    margin-top:0px;
     margin-right:12px;
     margin-bottom:0px;
+}
+
+QWidget#FeedWindowScrollAreaPostHeader {
+    margin-left:12px;
+    margin-top:24px;
+    margin-right:12px;
+    margin-bottom:6px;
+}
+
+QLabel#FeedWindowScrollAreaPostHeaderLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#f2f2f2;
+    margin:0px;
 }
 
 QScrollBar:vertical {
@@ -243,11 +269,11 @@ QScrollBar::handle:vertical {
 }
 
 QScrollBar::handle:vertical:hover {
-    background-color:#4d4d4d;
+    background-color:#404040;
 }
 
 QScrollBar::handle:vertical:pressed {
-    background-color:#666666;
+    background-color:#4d4d4d;
 }
 
 QScrollBar::up-arrow:vertical
@@ -268,4 +294,19 @@ QScrollBar::add-page:vertical
 QScrollBar::sub-page:vertical
 {
     background: none;
+}
+
+QLabel#CaptureWindowCountdownLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:24pt;
+    font-weight:500;
+    color:#f2f2f2;
+    margin-left:auto;
+    margin-top:12px;
+    margin-right:auto;
+    margin-bottom:12px;
+}
+
+QVideoWidget {
+    background-color:#ff0000;
 }

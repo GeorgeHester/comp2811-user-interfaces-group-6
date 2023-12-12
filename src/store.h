@@ -4,18 +4,22 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonArray>
-#include <QJsonParseError>
+#include <QVector>
+#include <QString>
 #include <QJsonValue>
+
+#include "resource.h"
+#include "feedmode.h"
+#include "window.h"
+#include "post.h"
 
 class Store
 {
-    public:
-
-
-
-    void load();
-    void write();
-    private:
+  public:
+    static FeedMode feed_mode;
+    static QVector<Post> posts;
+    static QString output_file_name;
+    static void loadPosts();
 };
 
 #endif // STORE_H

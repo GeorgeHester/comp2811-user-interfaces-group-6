@@ -40,11 +40,11 @@ RootWindow::RootWindow(QWidget* parent)
     this->stacked_widget->addWidget(this->feed_window);
 
     // Create the debug footer which allows for updating the stacked widget
-    Footer* footer = new Footer(this);
+    // Footer* footer = new Footer(this);
 
     // Add the base items to the central layout
     central_layout->addWidget(this->stacked_widget);
-    central_layout->addWidget(footer);
+    // central_layout->addWidget(footer);
 
     // this->label = new QLabel(this);
     // this->label->setText(QString("Test"));
@@ -60,13 +60,16 @@ RootWindow::RootWindow(QWidget* parent)
       (DisplayMode)SettingsHandler::getValue("display_mode", DisplayMode::Dark)
         .toInt());
 
+    // Set the current window
+    this->stacked_widget->setCurrentIndex(Window::Feed);
+
     // Connect the window updated listener
-    connect(footer,
-            &Footer::selectedWindowUpdated,
-            [=](int index)
-            {
-                this->stacked_widget->setCurrentIndex(index);
-            });
+    // connect(footer,
+    //        &Footer::selectedWindowUpdated,
+    //        [=](int index)
+    //        {
+    //            this->stacked_widget->setCurrentIndex(index);
+    //        });
 
     // Connect the display mode updated listener
     connect(this->settings_window,
@@ -95,6 +98,14 @@ RootWindow::RootWindow(QWidget* parent)
     // Connect for the window updated from settings window
     connect(this->settings_window,
             &SettingsWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
+
+    // Connect for the window updated from capture window
+    connect(this->capture_window,
+            &CaptureWindow::currentWindowUpdated,
             [this](Window to, Window from)
             {
                 this->updateCurrentWindow(to, from);

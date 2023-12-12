@@ -23,8 +23,15 @@
 #include <QSize>
 #include <QFrame>
 #include <QPainterPath>
+#include <QShowEvent>
+#include <QTimer>
+#include <QMediaRecorder>
+#include <QTemporaryFile>
+#include <QVideoEncoderSettings>
 
 #include "header.h"
+#include "window.h"
+#include "store.h"
 
 class CaptureWindow : public QWidget
 {
@@ -33,12 +40,30 @@ class CaptureWindow : public QWidget
   public:
     CaptureWindow(QWidget* parent = nullptr);
 
+  signals:
+    void currentWindowUpdated(Window to, Window from);
+
   protected:
     QFrame* viewfinder_frame;
     QCameraViewfinder* viewfinder;
+    QCamera* camera;
     Header* header;
+    QPushButton* capture_button;
+    QLabel* countdown_label;
+    QTimer* countdown_timer;
 
-    void paintCameraViewfinder(int width, int height);
+    int countdown_remaining_time;
+
+    QTemporaryFile* output_file;
+    QMediaRecorder* recorder;
+
+    void setRecorderSettings();
+
+    void captureButtonClicked();
+    void updateCaptureCountdown();
+
+    void resizeViewfinderFrame(int parent_width, int parent_height);
+    void resizeViewfinder(int parent_width, int parent_height);
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 };

@@ -2,9 +2,9 @@ QT += core widgets gui multimedia multimediawidgets
 
 CONFIG += c++17
 CONFIG += sdk_no_version_check
-CONFIG += console
 
 SOURCES += \
+    store.cpp \
     main.cpp \
     settingshandler.cpp \
     header.cpp \
@@ -14,6 +14,7 @@ SOURCES += \
     feedwindow.cpp
 
 HEADERS += \
+    store.h \
     resource.h \
     settingshandler.h \
     header.h \
@@ -29,7 +30,8 @@ RESOURCES += \
     font.qrc \
     icon.qrc \
     style.qrc \
-    video.qrc
+    video.qrc \
+    json.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

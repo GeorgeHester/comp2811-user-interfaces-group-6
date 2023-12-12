@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/data">
+        <file alias="input">static/ui/data/input.json</file>
+    </qresource>
+</RCC>

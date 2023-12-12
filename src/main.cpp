@@ -1,11 +1,14 @@
 #include <QApplication>
 
 #include "rootwindow.h"
+#include "store.h"
 
 int
 main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
+
+    Store::loadPosts();
 
     RootWindow* root_window = new RootWindow();
     root_window->show();

@@ -1,0 +1,24 @@
+{
+    "posts": [
+        {
+            "username": "Louis Pawn",
+            "post_url": "static/video/post-01.mp4",
+            "post_time": "30 Minutes ago"
+        },
+        {
+            "username": "Emil Waites",
+            "post_url": "static/video/post-02.mp4",
+            "post_time": "43 Minutes ago"
+        },
+        {
+            "username": "Jackie Scran",
+            "post_url": "static/video/post-03.mp4",
+            "post_time": "2 Hours ago"
+        },
+        {
+            "username": "Lukasz Wilton",
+            "post_url": "static/video/post-04.mp4",
+            "post_time": "7 Hours ago"
+        }
+    ]
+}

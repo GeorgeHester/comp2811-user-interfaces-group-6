@@ -1,7 +1,8 @@
 <RCC>
-    <qresource prefix="/video">
-        <file alias="post-01">static/video/post-01.mp4</file>
-        <file alias="post-02">static/video/post-02.mp4</file>
-        <file alias="post-03">static/video/post-03.mp4</file>
+    <qresource prefix="/">
+        <file>static/video/post-01.mp4</file>
+        <file>static/video/post-02.mp4</file>
+        <file>static/video/post-03.mp4</file>
+        <file>static/video/post-04.mp4</file>
     </qresource>
 </RCC>

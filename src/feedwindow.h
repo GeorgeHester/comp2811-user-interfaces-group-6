@@ -14,9 +14,14 @@
 #include <QScrollArea>
 #include <QVector>
 #include <QResizeEvent>
+#include <QMediaPlaylist>
+#include <QRectF>
+#include <QString>
 
 #include "window.h"
 #include "header.h"
+#include "post.h"
+#include "store.h"
 
 class FeedWindow : public QWidget
 {
@@ -28,15 +33,25 @@ class FeedWindow : public QWidget
   private:
     Header* header;
     QScrollArea* scroll_area;
+    QWidget* scroll_area_widget;
+    QBoxLayout* scroll_area_layout;
+    QVector<PostUi> posts;
+    QVector<PostBlank> blanks;
     QVector<QFrame*> frames;
-    void addPost();
+    QVector<QVideoWidget*> frame_video_widgets;
 
   signals:
     void currentWindowUpdated(Window to, Window from);
 
   protected:
+    void paintPosts();
     void resizeScrollArea(int window_width, int window_height);
-    void resizeFrames(int scroll_area_width, int scroll_area_height);
+    void resizePosts(int parent_width, int parent_height);
+    void resizePostBlanks(int parent_width, int parent_height);
+    void resizeFrameVideoWidget(int parent_width,
+                                int parent_height,
+                                QFrame* frame,
+                                QVideoWidget* video_widget);
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 };
