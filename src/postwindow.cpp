@@ -7,8 +7,6 @@ PostWindow::PostWindow(QWidget* parent)
     QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
     layout->setAlignment(Qt::AlignTop);
-    layout->setMargin(0);
-    layout->setSpacing(0);
 
     // Create a header with a back button
     this->header = new Header(this);
@@ -16,6 +14,7 @@ PostWindow::PostWindow(QWidget* parent)
 
     // Create a container for the frame
     this->frame_container = new QWidget(this);
+    layout->addWidget(this->frame_container);
 
     // Create the layout for the frame containrer
     QBoxLayout* frame_container_layout =
@@ -33,13 +32,11 @@ PostWindow::PostWindow(QWidget* parent)
     QBoxLayout* frame_layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this->frame);
     frame_layout->setAlignment(Qt::AlignTop);
-    frame_layout->setMargin(0);
-    frame_layout->setSpacing(0);
 
     this->video_widget = new QVideoWidget(this->frame);
     this->video_widget->setAspectRatioMode(
       Qt::AspectRatioMode::KeepAspectRatioByExpanding);
-    frame_layout->addWidget(video_widget);
+    frame_layout->addWidget(this->video_widget);
 
     this->playlist = new QMediaPlaylist(this->frame);
     this->playlist->setPlaybackMode(QMediaPlaylist::Loop);
@@ -52,14 +49,13 @@ PostWindow::PostWindow(QWidget* parent)
     // Create a post button
     this->post_button = new QPushButton("Post", this);
     this->post_button->setObjectName("PostWindowPostButton");
-    layout->addWidget(this);
+    layout->addWidget(this->post_button);
 
     // Connect handler for post button clicked
     connect(this->post_button,
             &QPushButton::clicked,
             [this]()
             {
-                Store::feed_mode = FeedMode::PostPost;
                 emit currentWindowUpdated(Window::FeedPost, Window::Capture);
             });
 };
@@ -67,7 +63,6 @@ PostWindow::PostWindow(QWidget* parent)
 void
 PostWindow::refresh()
 {
-    qDebug() << Store::temporary_file_name;
     this->playlist->clear();
     this->playlist->addMedia(QUrl::fromLocalFile(Store::temporary_file_name));
     this->playlist->setCurrentIndex(0);

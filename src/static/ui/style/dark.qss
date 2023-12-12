@@ -1,3 +1,7 @@
+QWidget {
+    margin:0px;
+}
+
 QMainWindow#MainWindow {
     background-color:#0d0d0d;
 }
@@ -295,9 +299,8 @@ QScrollBar::sub-page:vertical
     background: none;
 }
 
-
 QVideoWidget {
-    background-color:#ff0000;
+    background-color:#191919;
 }
 
 QFrame#CaptureWindowFrame {
