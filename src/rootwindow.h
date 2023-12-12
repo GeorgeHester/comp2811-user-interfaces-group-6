@@ -14,6 +14,7 @@
 #include "window.h"
 #include "capturewindow.h"
 #include "settingswindow.h"
+#include "postwindow.h"
 #include "feedwindow.h"
 #include "displaymode.h"
 #include "footer.h"
@@ -32,6 +33,7 @@ class RootWindow : public QMainWindow
     CaptureWindow* capture_window;
     SettingsWindow* settings_window;
     FeedWindow* feed_window;
+    PostWindow* post_window;
     QString qss_light_mode;
     QString qss_dark_mode;
     QString qss_light_high_contrast_mode;

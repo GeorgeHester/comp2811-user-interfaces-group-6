@@ -6,6 +6,7 @@ enum Window
     Capture,
     Settings,
     Feed,
+    PostScreen,
     Unknown
 };
 

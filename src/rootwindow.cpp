@@ -14,6 +14,15 @@ RootWindow::RootWindow(QWidget* parent)
     this->qss_dark_high_contrast_mode =
       Resource::load(QString(":/ui/style/dark-high-contrast"));
 
+    // Set the current display mode based off of the user settings
+    this->updateDisplayMode(
+      (DisplayMode)SettingsHandler::getValue("display_mode", DisplayMode::Dark)
+        .toInt());
+
+    // Set the current font size
+    this->updateFontSizeScale(
+      SettingsHandler::getValue("font_size_scale", 1.0).toDouble());
+
     // Create the central layout for the main window
     QBoxLayout* central_layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom);
@@ -39,26 +48,16 @@ RootWindow::RootWindow(QWidget* parent)
     this->feed_window = new FeedWindow(this);
     this->stacked_widget->addWidget(this->feed_window);
 
-    // Create the debug footer which allows for updating the stacked widget
-    // Footer* footer = new Footer(this);
+    // Create the post window widget
+    this->post_window = new PostWindow(this);
+    this->stacked_widget->addWidget(this->post_window);
 
     // Add the base items to the central layout
     central_layout->addWidget(this->stacked_widget);
-    // central_layout->addWidget(footer);
-
-    // this->label = new QLabel(this);
-    // this->label->setText(QString("Test"));
-    // this->label->setStyleSheet(QString("QLabel{color:#ffffff;}"));
-    // central_layout->addWidget(this->label);
 
     // Set the main windows central widget and object name
     this->setCentralWidget(central_widget);
     this->setObjectName(QString("MainWindow"));
-
-    // Set the current display mode based off of the user settings
-    this->updateDisplayMode(
-      (DisplayMode)SettingsHandler::getValue("display_mode", DisplayMode::Dark)
-        .toInt());
 
     // Set the current window
     this->stacked_widget->setCurrentIndex(Window::Feed);
@@ -110,6 +109,18 @@ RootWindow::RootWindow(QWidget* parent)
             {
                 this->updateCurrentWindow(to, from);
             });
+
+    // Connect for the window updated from post window
+    connect(this->post_window,
+            &PostWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
+
+    // Store::post_file_name =
+    // "file:///Users/george/university/modules/comp2811/vreal/working/test.mp4";
+    // this->updateCurrentWindow(Window::PostScreen, Window::Settings);
 };
 
 void
@@ -118,11 +129,15 @@ RootWindow::updateCurrentWindow(Window to, Window from)
     if (to == Window::Unknown)
     {
         this->stacked_widget->setCurrentIndex(this->previous_window);
+        if (to == Window::PostScreen) this->post_window->refresh();
+        this->stacked_widget->currentWidget()->update();
         this->previous_window = from;
         return;
     };
 
     this->stacked_widget->setCurrentIndex(to);
+    if (to == Window::PostScreen) this->post_window->refresh();
+    this->stacked_widget->currentWidget()->update();
     this->previous_window = from;
 };
 

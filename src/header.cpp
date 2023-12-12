@@ -56,8 +56,9 @@ Header::Header(QString right_button_text, QWidget* parent)
 };
 
 void
-Header::resizeEvent(QResizeEvent* event){
-
+Header::resizeEvent(QResizeEvent* event)
+{
+    QWidget::resizeEvent(event);
 };
 
 void

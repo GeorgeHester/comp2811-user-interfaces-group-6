@@ -11,10 +11,12 @@ SOURCES += \
     rootwindow.cpp \
     capturewindow.cpp \
     settingswindow.cpp \
-    feedwindow.cpp
+    feedwindow.cpp \
+    postwindow.cpp
 
 HEADERS += \
     store.h \
+    window.h \
     resource.h \
     settingshandler.h \
     header.h \
@@ -22,9 +24,9 @@ HEADERS += \
     rootwindow.h \
     capturewindow.h \
     settingswindow.h \
+    postwindow.h \
     feedwindow.h \
-    displaymode.h \
-    window.h
+    displaymode.h
 
 RESOURCES += \
     font.qrc \

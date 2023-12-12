@@ -201,18 +201,6 @@ QPushButton#SettingsWindowResetButton {
     margin-top:24px;
 }
 
-QFrame#CaptureWindowViewfinderFrame {
-    border-radius:16px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:12px;
-}
-
 QScrollArea#FeedWindowScrollArea {
     margin:0px;
     margin-bottom:12px;
@@ -296,17 +284,53 @@ QScrollBar::sub-page:vertical
     background: none;
 }
 
+
+QVideoWidget {
+    background-color:#ff0000;
+}
+
+QFrame#CaptureWindowFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:12px;
+}
+
 QLabel#CaptureWindowCountdownLabel {
     font-family:"Plus Jakarta Sans";
     font-size:24pt;
     font-weight:500;
     color:#f2f2f2;
-    margin-left:auto;
+    margin:0px;
+}
+
+QPushButton#CaptureWindowCaptureButton {
+    margin-left:12px;
     margin-top:12px;
-    margin-right:auto;
+    margin-right:12px;
     margin-bottom:12px;
 }
 
-QVideoWidget {
-    background-color:#ff0000;
+QFrame#PostWindowFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
+QPushButton#PostWindowPostButton {
+    margin-left:12px;
+    margin-top:12px;
+    margin-right:12px;
+    margin-bottom:12px;
 }

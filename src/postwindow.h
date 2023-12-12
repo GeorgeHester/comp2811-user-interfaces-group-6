@@ -6,9 +6,15 @@
 #include <QResizeEvent>
 #include <QBoxLayout>
 #include <QPushButton>
+#include <QVideoWidget>
+#include <QFrame>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
+#include <QPainterPath>
 
 #include "header.h"
 #include "window.h"
+#include "store.h"
 
 class PostWindow : public QWidget
 {
@@ -18,11 +24,22 @@ class PostWindow : public QWidget
     PostWindow(QWidget* parent = nullptr);
     Header* header;
     QPushButton* post_button;
+    QWidget* frame_container;
+    QFrame* frame;
+    QVideoWidget* video_widget;
+    QMediaPlaylist* playlist;
+    QMediaPlayer* player;
+
+    void refresh();
 
   signals:
     void currentWindowUpdated(Window to, Window from);
 
   protected:
+    void resizeVideoWidget(int parent_width, int parent_height);
+    void resizeFrame(int parent_width, int parent_height);
+    void resizeFrameContainer(int parent_width, int parent_height);
+
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 };

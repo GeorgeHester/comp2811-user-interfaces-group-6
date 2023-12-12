@@ -18,7 +18,7 @@ class Store
   public:
     static FeedMode feed_mode;
     static QVector<Post> posts;
-    static QString output_file_name;
+    static QString post_file_name;
     static void loadPosts();
 };
 
