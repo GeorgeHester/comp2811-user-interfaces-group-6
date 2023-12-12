@@ -9,6 +9,7 @@ desktop.ini
 !/.vscode/
 
 /build/
+/build*/
 /working/
 
 **/*.pro.user

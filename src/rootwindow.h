@@ -1,6 +1,7 @@
 #ifndef ROOTWINDOW_H
 #define ROOTWINDOW_H
 
+#include <cmath>
 #include <QWidget>
 #include <QBoxLayout>
 #include <QStackedLayout>
