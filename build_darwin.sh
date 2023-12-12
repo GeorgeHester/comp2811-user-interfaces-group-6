@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # USER SETTINGS
 QT_PATH=/Users/george/Qt/5.15.2/clang_64
 
