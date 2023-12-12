@@ -55,8 +55,6 @@ class CaptureWindow : public QWidget
     QTimer* countdown_timer;
 
     int countdown_remaining_time;
-
-    QTemporaryFile* output_file;
     QMediaRecorder* recorder;
 
     void setRecorderSettings();

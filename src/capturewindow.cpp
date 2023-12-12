@@ -14,7 +14,6 @@ CaptureWindow::CaptureWindow(QWidget* parent)
     this->header = new Header("Back", this);
     layout->addWidget(this->header);
 
-    // Create a container for the frame
     this->frame_container = new QWidget(this);
 
     // Create the layout for the frame containrer
@@ -121,22 +120,24 @@ CaptureWindow::setRecorderSettings()
 void
 CaptureWindow::captureButtonClicked()
 {
-    // this->output_file->open();
-    // Store::output_file_name = this->output_file->fileName();
-    // this->recorder->setOutputLocation(
-    // QUrl::fromLocalFile(Store::output_file_name));
+    QTemporaryFile* temporary_file = new QTemporaryFile(this);
+    temporary_file->setAutoRemove(true);
+    temporary_file->open();
+
+    Store::temporary_file_name = temporary_file->fileName() + ".mp4";
 
     this->capture_button->setDisabled(true);
 
     this->countdown_remaining_time = 5000;
     this->countdown_timer->start();
 
+    qDebug() << Store::temporary_file_name;
+
     this->setRecorderSettings();
-    this->recorder->setOutputLocation(QUrl::fromLocalFile(
-      "/Users/george/university/modules/comp2811/vreal/working/test.mp4"));
+    this->recorder->setOutputLocation(
+      QUrl::fromLocalFile(Store::temporary_file_name));
 
     this->recorder->record();
-    Store::post_file_name = this->recorder->actualLocation().toString();
 };
 
 void
@@ -155,47 +156,6 @@ CaptureWindow::updateCaptureCountdown()
 
     emit currentWindowUpdated(Window::PostScreen, Window::Capture);
 };
-
-/*
-void
-CaptureWindow::resizeViewfinder(int parent_width, int parent_height)
-{
-    // Get the new sizes
-    int header_height = this->header->height();
-    int frame_radius = 16;
-    int new_width = parent_width - 24 - 4;
-    int new_height = parent_height - 12 - 4;
-
-    // Set viewfinder size
-    this->viewfinder->setGeometry(14, 2, new_width, new_height);
-
-    // Set rounded mask
-    QPainterPath* painter_path = new QPainterPath();
-    painter_path->addRoundedRect(
-      QRectF(0, 0, new_width, new_height), frame_radius, frame_radius);
-    this->viewfinder->setMask(painter_path->toFillPolygon().toPolygon());
-};
-*/
-/*
-void
-CaptureWindow::resizeViewfinderFrame(int parent_width, int parent_height)
-{
-    // Get the new sizes
-    int header_height = this->header->height();
-    int new_width = parent_width;
-    int new_height =
-      new_width * 5 /
-      4; // std::min(new_width * 5 / 4, new_width - header_height);
-
-    // Update the size for the viewfinder frame
-    this->viewfinder_frame->setGeometry(
-      0, header_height, new_width, new_height);
-
-    // Update the viewfinder
-    this->resizeViewfinder(this->viewfinder_frame->width(),
-                           this->viewfinder_frame->height());
-};
-*/
 
 void
 CaptureWindow::resizeViewfinder(int parent_width, int parent_height)
@@ -237,11 +197,14 @@ CaptureWindow::resizeFrameContainer(int parent_width, int parent_height)
 
     // Update countdown geometry
     this->countdown_label->setGeometry(
-      0, header_height + parent_width * 5 / 4, parent_width, 24 + 12);
+      0, header_height + (parent_width * 5 / 4), parent_width, 24 + 12);
 
     // Update capture button geometry
-    this->capture_button->setGeometry(
-      0, header_height + parent_width * 5 / 4 + 24 + 24, parent_width, 40 + 24);
+    this->capture_button->setGeometry(0,
+                                      header_height + (parent_width * 5 / 4) +
+                                        24 + 24,
+                                      parent_width,
+                                      40 + 24);
 };
 
 void

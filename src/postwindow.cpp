@@ -43,7 +43,6 @@ PostWindow::PostWindow(QWidget* parent)
 
     this->playlist = new QMediaPlaylist(this->frame);
     this->playlist->setPlaybackMode(QMediaPlaylist::Loop);
-    qDebug() << Store::post_file_name;
 
     this->player = new QMediaPlayer(this->frame);
     this->player->setMuted(true);
@@ -67,9 +66,9 @@ PostWindow::PostWindow(QWidget* parent)
 void
 PostWindow::refresh()
 {
-    qDebug() << Store::post_file_name;
+    qDebug() << Store::temporary_file_name;
     this->playlist->clear();
-    this->playlist->addMedia(QUrl(Store::post_file_name));
+    this->playlist->addMedia(QUrl::fromLocalFile(Store::temporary_file_name));
     this->playlist->setCurrentIndex(0);
     this->player->play();
 };

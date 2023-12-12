@@ -2,7 +2,7 @@
 
 QVector<Post> Store::posts;
 FeedMode Store::feed_mode = FeedMode::PrePost;
-QString Store::post_file_name;
+QString Store::temporary_file_name;
 
 void
 Store::loadPosts()
