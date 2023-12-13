@@ -8,7 +8,6 @@
         "~/Qt/5.15.2/clang_64/lib/**"
     ],
     "files.associations": {
-        "*.ccjs": "javascript",
         ".clang-format": "plaintext",
         "qboxlayout": "cpp",
         "qjsondocument": "cpp",

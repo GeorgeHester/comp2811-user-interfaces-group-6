@@ -19,7 +19,6 @@
 #include "feedprewindow.h"
 #include "feedpostwindow.h"
 #include "displaymode.h"
-#include "footer.h"
 
 class RootWindow : public QMainWindow
 {

@@ -4,31 +4,32 @@ CONFIG += c++17
 CONFIG += sdk_no_version_check
 
 SOURCES += \
-    store.cpp \
     main.cpp \
+    store.cpp \
     settingshandler.cpp \
     header.cpp \
     rootwindow.cpp \
     capturewindow.cpp \
     settingswindow.cpp \
+    postwindow.cpp \
     feedprewindow.cpp \
-    feedpostwindow.cpp \
-    postwindow.cpp
+    feedpostwindow.cpp
 
 HEADERS += \
+    resource.h \
     store.h \
     window.h \
-    resource.h \
+    post.h \
+    feedmode.h \
+    displaymode.h \
     settingshandler.h \
     header.h \
-    footer.h \
     rootwindow.h \
     capturewindow.h \
     settingswindow.h \
     postwindow.h \
     feedprewindow.h \
-    feedpostwindow.h \
-    displaymode.h
+    feedpostwindow.h
 
 RESOURCES += \
     font.qrc \
