@@ -57,7 +57,7 @@ RootWindow::RootWindow(QWidget* parent)
 
     // Set the current window
     // this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
-    this->updateCurrentWindow(Window::FeedPost, Window::Unknown);
+    this->updateCurrentWindow(Window::PostScreen, Window::Unknown);
 
     // Connect the display mode updated listener
     connect(this->settings_window,
@@ -169,6 +169,8 @@ RootWindow::updateDisplayMode(DisplayMode display_mode)
 
     this->updateFontSizeScale(
       SettingsHandler::getValue("font_size_scale", 1.0).toDouble());
+
+    qDebug() << this->styleSheet();
 };
 
 void

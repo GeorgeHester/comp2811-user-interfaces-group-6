@@ -4,6 +4,7 @@ QWidget {
 
 QMainWindow#MainWindow {
     background-color:#0d0d0d;
+    margin:0px;
 }
 
 QWidget#SettingsWindow {
@@ -336,15 +337,8 @@ QFrame#PostWindowFrame {
     border-style:solid;
     border-color:#262626;
     background-color:#191919;
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:0px;
 }
 
 QPushButton#PostWindowPostButton {
-    margin-left:12px;
-    margin-top:12px;
-    margin-right:12px;
-    margin-bottom:12px;
+    margin:12px;
 }

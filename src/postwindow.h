@@ -22,6 +22,9 @@ class PostWindow : public QWidget
 
   public:
     PostWindow(QWidget* parent = nullptr);
+
+    void refresh();
+
     Header* header;
     QPushButton* post_button;
     QWidget* frame_container;
@@ -30,15 +33,13 @@ class PostWindow : public QWidget
     QMediaPlaylist* playlist;
     QMediaPlayer* player;
 
-    void refresh();
-
   signals:
     void currentWindowUpdated(Window to, Window from);
 
   protected:
-    void resizeVideoWidget(int parent_width, int parent_height);
-    void resizeFrame(int parent_width, int parent_height);
     void resizeFrameContainer(int parent_width, int parent_height);
+    void resizeFrame(int parent_width, int parent_height);
+    void resizeVideoWidget(int parent_width, int parent_height);
 
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;

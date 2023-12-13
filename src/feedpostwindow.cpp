@@ -79,7 +79,8 @@ FeedPostWindow::paintPosts()
 
         QFrame* post_frame = new QFrame(this->scroll_area_widget);
         post_frame->setObjectName("FeedWindowScrollAreaFrame");
-        post_frame->setFixedSize(INT_MAX, INT_MAX);
+        // post_frame->setFixedSize(INT_MAX, INT_MAX);
+        post_frame->setFixedSize(0, 0);
         this->scroll_area_layout->addWidget(post_frame);
 
         QLabel* post_caption_label = new QLabel(this->scroll_area_widget);

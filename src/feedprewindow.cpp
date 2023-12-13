@@ -80,7 +80,8 @@ FeedPreWindow::paintPosts()
 
         QFrame* post_frame = new QFrame(this->scroll_area_widget);
         post_frame->setObjectName("FeedWindowScrollAreaFrame");
-        post_frame->setFixedSize(INT_MAX, INT_MAX);
+        // post_frame->setFixedSize(INT_MAX, INT_MAX);
+        post_frame->setFixedSize(0, 0);
 
         QBoxLayout* post_frame_layout =
           new QBoxLayout(QBoxLayout::Direction::TopToBottom, post_frame);
