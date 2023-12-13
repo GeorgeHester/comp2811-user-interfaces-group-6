@@ -32,6 +32,8 @@
         <string>public.app-category.social-networking</string>
         <key>NSCameraUsageDescription</key>
         <string>This app uses the camera to capture videos.</string>
+        <key>NSMicrophoneUsageDescription</key>
+        <string>This app uses the microphone to capture videos.</string>
         <key>UIViewControllerBasedStatusBarAppearance</key>
         <false />
     </dict>

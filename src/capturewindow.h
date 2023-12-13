@@ -43,22 +43,20 @@ class CaptureWindow : public QWidget
   signals:
     void currentWindowUpdated(Window to, Window from);
 
-  protected:
+  private:
+    Header* header;
     QWidget* frame_container;
     QFrame* frame;
-
     QCameraViewfinder* viewfinder;
-    QCamera* camera;
-    Header* header;
-    QPushButton* capture_button;
     QLabel* countdown_label;
-    QTimer* countdown_timer;
-
-    int countdown_remaining_time;
+    QPushButton* capture_button;
+    QCamera* camera;
     QMediaRecorder* recorder;
+    QTimer* countdown_timer;
+    int countdown_remaining_time;
 
+  protected:
     void setRecorderSettings();
-
     void captureButtonClicked();
     void updateCaptureCountdown();
 
@@ -66,8 +64,6 @@ class CaptureWindow : public QWidget
     void resizeFrame(int parent_width, int parent_height);
     void resizeFrameContainer(int parent_width, int parent_height);
 
-    // void resizeViewfinderFrame(int parent_width, int parent_height);
-    // void resizeViewfinder(int parent_width, int parent_height);
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 };

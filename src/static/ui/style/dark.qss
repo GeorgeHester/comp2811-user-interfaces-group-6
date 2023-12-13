@@ -310,25 +310,18 @@ QFrame#CaptureWindowFrame {
     border-style:solid;
     border-color:#262626;
     background-color:#191919;
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:12px;
 }
 
 QLabel#CaptureWindowCountdownLabel {
     font-family:"Plus Jakarta Sans";
-    font-size:24pt;
+    font-size:32pt;
     font-weight:500;
     color:#f2f2f2;
-    margin:0px;
+    margin:12px;
 }
 
 QPushButton#CaptureWindowCaptureButton {
-    margin-left:12px;
-    margin-top:12px;
-    margin-right:12px;
-    margin-bottom:12px;
+    margin:12px;
 }
 
 QFrame#PostWindowFrame {

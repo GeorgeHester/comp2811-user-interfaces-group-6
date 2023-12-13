@@ -3,8 +3,6 @@
 PostWindow::PostWindow(QWidget* parent)
   : QWidget(parent)
 {
-    this->setObjectName("PostWindow");
-
     // Create the layout for the widget
     QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
@@ -18,7 +16,6 @@ PostWindow::PostWindow(QWidget* parent)
 
     // Create a frame container
     this->frame_container = new QWidget(this);
-    this->frame_container->setObjectName("PostWindowFrameContainer");
     layout->addWidget(this->frame_container, 0, Qt::AlignCenter);
 
     // Create the layout for the frame containrer
@@ -45,7 +42,6 @@ PostWindow::PostWindow(QWidget* parent)
     this->video_widget = new QVideoWidget(this->frame);
     this->video_widget->setAspectRatioMode(
       Qt::AspectRatioMode::KeepAspectRatioByExpanding);
-    frame_layout->addWidget(this->video_widget);
 
     // Create a playlist
     this->playlist = new QMediaPlaylist(this->frame);
@@ -74,6 +70,8 @@ PostWindow::PostWindow(QWidget* parent)
 void
 PostWindow::refresh()
 {
+    qDebug() << "Loading: " << Store::temporary_file_name;
+
     // Clear out the current playlist
     this->playlist->clear();
 

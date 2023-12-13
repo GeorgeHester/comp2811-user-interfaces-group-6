@@ -25,16 +25,17 @@ class PostWindow : public QWidget
 
     void refresh();
 
+  signals:
+    void currentWindowUpdated(Window to, Window from);
+
+  private:
     Header* header;
-    QPushButton* post_button;
     QWidget* frame_container;
     QFrame* frame;
     QVideoWidget* video_widget;
+    QPushButton* post_button;
     QMediaPlaylist* playlist;
     QMediaPlayer* player;
-
-  signals:
-    void currentWindowUpdated(Window to, Window from);
 
   protected:
     void resizeFrameContainer(int parent_width, int parent_height);
