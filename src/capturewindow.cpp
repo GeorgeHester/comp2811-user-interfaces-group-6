@@ -133,8 +133,6 @@ CaptureWindow::captureButtonClicked()
     this->countdown_remaining_time = 5000;
     this->countdown_timer->start();
 
-    qDebug() << Store::temporary_file_name;
-
     this->setRecorderSettings();
     this->recorder->setOutputLocation(
       QUrl::fromLocalFile(Store::temporary_file_name));

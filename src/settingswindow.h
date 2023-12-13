@@ -25,11 +25,10 @@ class SettingsWindow : public QWidget
 
   signals:
     void currentWindowUpdated(Window to, Window from);
-    void displayModeUpdated(const DisplayMode& display_mode);
-    void fontSizeScaleUpdated(const double& scale);
+    void displayModeUpdated(DisplayMode display_mode);
+    void fontSizeScaleUpdated(double scale);
 
   protected:
-    void resizeEvent(QResizeEvent* event) override;
     void paintEvent(QPaintEvent* event) override;
 };
 

@@ -11,6 +11,10 @@ QWidget {
 */
 
 QLabel {
+    color:#f2f2f2;
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:500;
     margin:0px;
 }
 
@@ -19,23 +23,26 @@ QLabel {
 */
 
 QComboBox {
+    color:#f2f2f2;
+    border-color:#262626;
+    background-color:#191919;
     font-family:"Plus Jakarta Sans";
     font-size:14pt;
     font-weight:500;
-    color:#f2f2f2;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
+    /*
     margin-left:12px;
     margin-top:0px;
     margin-right:12px;
     margin-bottom:0px;
+    */
     padding-left:8px;
     padding-top:4px;
     padding-right:8px;
     padding-bottom:4px;
+    margin:0px;
     outline:none;
 }
 
@@ -60,22 +67,22 @@ QComboBox::down-arrow {
 }
 
 QComboBox QAbstractItemView {
+    border-color:#262626;
+    background-color: #191919;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color: #191919;
     margin:0px;
     padding:8px;
     outline:none;
 }
 
 QComboBox QAbstractItemView::item {
+    border-color:#191919;
+    background-color: #191919;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#191919;
-    background-color: #191919;
     margin:0px;
     padding:8px;
     outline:none;
@@ -94,18 +101,21 @@ QComboBox QAbstractItemView::item:selected {
 */
 
 QSlider {
+    /*
     margin-left:12px;
     margin-top:0px;
     margin-right:12px;
     margin-bottom:0px;
+    */
+    margin:0px;
     padding:0px;
 }
 
 QSlider::handle:horizontal {
-    border-width:2px;
-    border-style:solid;
     border-color:#262626;
 	background-color:#191919;
+    border-width:2px;
+    border-style:solid;
     width:8px;
     margin:-4px -4px;
     border-radius:4px;
@@ -116,34 +126,34 @@ QSlider::handle:horizontal:hover{
 }
 
 QSlider::groove:horizontal {
+    border-color:#262626;
+    background-color:#6fa1fe;
 	border-radius:4px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
 	height:4px;
-	background-color:#6fa1fe;
 	margin:0px;
 	padding:0px;
 }
 
 QSlider::add-page:horizontal {
+    border-color:#262626;
+	background-color:#f2f2f2;
 	border-radius:4px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
 	height:4px;
-	background-color:#f2f2f2;
 	margin:0px;
 	padding:0px;
 }
 
 QSlider::sub-page:horizontal {
+    border-color:#262626;
+	background-color:#6fa1fe;
 	border-radius:4px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
 	height:4px;
-	background-color:#6fa1fe;
 	margin:0px;
 	padding:0px;
 }
@@ -153,19 +163,22 @@ QSlider::sub-page:horizontal {
 */
 
 QPushButton {
+    color:#f2f2f2;
+    border-color:#262626;
+    background-color:#191919;
 	font-family:"Plus Jakarta Sans";
     font-size:14pt;
     font-weight:500;
-    color:#f2f2f2;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
+    /*
     margin-left:12px;
     margin-top:0px;
     margin-right:12px;
     margin-bottom:0px;
+    */
+    margin:0px;
     padding-left:8px;
     padding-top:4px;
     padding-right:8px;
@@ -193,57 +206,6 @@ QPushButton:disabled {
 }
 
 /*
-    Q SCROLL BAR
-*/
-
-QScrollBar:vertical {
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
-    width:8px;
-    margin-left:0px;
-    margin-top:6px;
-    margin-right:0px;
-    margin-bottom:6px;
-    border-radius:4px;
-}
-
-QScrollBar::handle:vertical {
-    background-color:#333333;
-    min-height:24px;
-    border-radius:2px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background-color:#404040;
-}
-
-QScrollBar::handle:vertical:pressed {
-    background-color:#4d4d4d;
-}
-
-QScrollBar::up-arrow:vertical
-{
-    background:none;
-}
-
-QScrollBar::down-arrow:vertical
-{
-    background:none;
-}
-
-QScrollBar::add-page:vertical
-{
-    background: none;
-}
-
-QScrollBar::sub-page:vertical
-{
-    background: none;
-}
-
-/*
     Q VIDEO WIDGET
 */
 
@@ -256,16 +218,15 @@ QVideoWidget {
 */
 
 QLineEdit {
-    show-decoration-selected: 0;
+    color:#f2f2f2;
+    border-color:#262626;
+    background-color:#191919;
 	font-family:"Plus Jakarta Sans";
     font-size:14pt;
     font-weight:500;
-    color:#f2f2f2;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
     padding-left:8px;
     padding-top:4px;
     padding-right:8px;
@@ -290,14 +251,11 @@ QLineEdit:focus {
 QWidget#Header {
     background-color:#0d0d0d;
     margin:0px;
-    padding:0px;
 }
 
 QLabel#HeaderLogo {
-    font-family:"Plus Jakarta Sans";
     font-size:18pt;
     font-weight:700;
-    color:#f2f2f2;
     margin-left:auto;
     margin-top:12px;
     margin-right:auto;
@@ -318,38 +276,49 @@ QMainWindow#MainWindow {
 */
 
 QLabel#SettingsWindowItemLabel {
-    font-family:"Plus Jakarta Sans";
     font-size:12pt;
-    font-weight:500;
-    color:#f2f2f2;
     margin-left:12px;
-    margin-top:24px;
+    margin-top:12px;
     margin-right:12px;
     margin-bottom:6px;
 }
 
+QComboBox#SettingsWindowComboBox {
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
+QSlider#SettingsWindowSlider {
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
 QPushButton#SettingsWindowResetButton {
+    margin-left:12px;
     margin-top:24px;
+    margin-right:12px;
+    margin-bottom:0px;
 }
 
 /*
     CAPTURE WINDOW
 */
 
+QLabel#CaptureWindowCountdownLabel {
+    font-size:32pt;
+    margin:12px;
+}
+
 QFrame#CaptureWindowFrame {
+    border-color:#262626;
+    background-color:#191919;
     border-radius:16px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
-}
-
-QLabel#CaptureWindowCountdownLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:32pt;
-    font-weight:500;
-    color:#f2f2f2;
-    margin:12px;
 }
 
 QPushButton#CaptureWindowCaptureButton {
@@ -361,11 +330,11 @@ QPushButton#CaptureWindowCaptureButton {
 */
 
 QFrame#PostWindowFrame {
+    border-color:#262626;
+    background-color:#191919;
     border-radius:16px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
 }
 
 QLineEdit#PostWindowCaptionInput {
@@ -383,25 +352,13 @@ QPushButton#PostWindowPostButton {
     FEED WINDOW
 */
 
-/*
 QScrollArea#FeedWindowScrollArea {
     margin:0px;
+    background: transparent;
 }
-*/
 
-QScrollArea#FeedWindowScrollArea { background: transparent; }
-QScrollArea#FeedWindowScrollArea > QWidget > QWidget { background: transparent; }
-
-QFrame#FeedWindowScrollAreaFrame {
-    border-radius:16px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:12px;
+QScrollArea#FeedWindowScrollArea > QWidget > QWidget {
+    background: transparent;
 }
 
 QWidget#FeedWindowScrollAreaHeader {
@@ -411,21 +368,21 @@ QWidget#FeedWindowScrollAreaHeader {
     margin-bottom:6px;
 }
 
-QLabel#FeedWindowScrollAreaHeaderLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:14pt;
-    font-weight:700;
-    color:#f2f2f2;
-    margin:0px;
+QFrame#FeedWindowScrollAreaFrame {
+    border-color:#262626;
+    background-color:#191919;
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:12px;
 }
 
 QLabel#FeedWindowScrollAreaCaptionLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:14pt;
-    font-weight:700;
-    color:#f2f2f2;
     margin-left:12px;
-    margin-top:0px;
+    margin-top:6px;
     margin-right:12px;
     margin-bottom:12px;
 }

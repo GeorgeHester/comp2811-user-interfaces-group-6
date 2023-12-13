@@ -10,7 +10,6 @@
 #include <QVideoWidget>
 #include <QUrl>
 #include <QBoxLayout>
-#include <QDebug>
 #include <QScrollArea>
 #include <QVector>
 #include <QResizeEvent>

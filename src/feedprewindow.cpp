@@ -71,16 +71,12 @@ FeedPreWindow::paintPosts()
 
         // Create a post header username label
         QLabel* post_header_username_label = new QLabel(post_header);
-        post_header_username_label->setObjectName(
-          "FeedWindowScrollAreaHeaderLabel");
         post_header_username_label->setAlignment(Qt::AlignLeft);
         post_header_username_label->setText(post.username);
         post_header_layout->addWidget(post_header_username_label);
 
         // Create a post header time label
         QLabel* post_header_time_label = new QLabel(post_header);
-        post_header_time_label->setObjectName(
-          "FeedWindowScrollAreaHeaderLabel");
         post_header_time_label->setAlignment(Qt::AlignRight);
         post_header_time_label->setText(post.post_time);
         post_header_layout->addWidget(post_header_time_label);

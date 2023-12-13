@@ -169,8 +169,6 @@ RootWindow::updateDisplayMode(DisplayMode display_mode)
 
     this->updateFontSizeScale(
       SettingsHandler::getValue("font_size_scale", 1.0).toDouble());
-
-    qDebug() << this->styleSheet();
 };
 
 void

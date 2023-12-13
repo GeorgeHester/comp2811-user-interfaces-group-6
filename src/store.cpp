@@ -22,8 +22,6 @@ Store::loadPosts()
 
     for (QJsonValue post_value : posts_array)
     {
-        qDebug() << "POST READ";
-
         QJsonObject post_object = post_value.toObject();
 
         QString username = post_object["username"].toString();
