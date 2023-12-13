@@ -13,9 +13,11 @@ SOURCES += \
     settingswindow.cpp \
     postwindow.cpp \
     feedprewindow.cpp \
-    feedpostwindow.cpp
+    feedpostwindow.cpp \
+    reactwindow.cpp
 
 HEADERS += \
+    frame.h \
     resource.h \
     store.h \
     window.h \
@@ -29,7 +31,8 @@ HEADERS += \
     settingswindow.h \
     postwindow.h \
     feedprewindow.h \
-    feedpostwindow.h
+    feedpostwindow.h \
+    reactwindow.h
 
 RESOURCES += \
     font.qrc \

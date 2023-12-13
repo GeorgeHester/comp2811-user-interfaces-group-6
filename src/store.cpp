@@ -3,6 +3,7 @@
 QVector<Post> Store::posts;
 FeedMode Store::feed_mode = FeedMode::PrePost;
 QString Store::temporary_file_name;
+QString Store::selected_post_url;
 
 void
 Store::loadPosts()

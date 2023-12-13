@@ -55,9 +55,13 @@ RootWindow::RootWindow(QWidget* parent)
     this->post_window = new PostWindow(this->stacked_widget);
     this->stacked_widget->addWidget(this->post_window);
 
+    // Create the react window widget
+    this->react_window = new ReactWindow(this->stacked_widget);
+    this->stacked_widget->addWidget(this->react_window);
+
     // Set the current window
     // this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
-    this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
+    this->updateCurrentWindow(Window::React, Window::Unknown);
 
     // Connect the display mode updated listener
     connect(this->settings_window,
@@ -114,6 +118,14 @@ RootWindow::RootWindow(QWidget* parent)
             {
                 this->updateCurrentWindow(to, from);
             });
+
+    // Connect for the window updated from react window
+    connect(this->react_window,
+            &ReactWindow::currentWindowUpdated,
+            [this](Window to, Window from)
+            {
+                this->updateCurrentWindow(to, from);
+            });
 };
 
 void
@@ -139,6 +151,8 @@ RootWindow::refreshWindow(Window window)
     {
         case Window::PostScreen:
             this->post_window->refresh();
+        case Window::React:
+            this->react_window->refresh();
         default:
             break;
     };

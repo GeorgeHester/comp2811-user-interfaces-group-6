@@ -21,6 +21,7 @@
 #include "header.h"
 #include "post.h"
 #include "store.h"
+#include "frame.h"
 
 class FeedPostWindow : public QWidget
 {

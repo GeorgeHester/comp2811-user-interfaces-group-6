@@ -1,6 +1,6 @@
-#include "postwindow.h"
+#include "reactwindow.h"
 
-PostWindow::PostWindow(QWidget* parent)
+ReactWindow::ReactWindow(QWidget* parent)
   : QWidget(parent)
 {
     // Create the layout for the widget
@@ -11,8 +11,8 @@ PostWindow::PostWindow(QWidget* parent)
     layout->setSpacing(0);
 
     // Create a header
-    this->header = new Header(this);
-    layout->addWidget(this->header);
+    Header* header = new Header("Back", this);
+    layout->addWidget(header);
 
     // Create a frame container
     this->frame_container = new QWidget(this);
@@ -53,34 +53,28 @@ PostWindow::PostWindow(QWidget* parent)
     this->player->setVideoOutput(this->video_widget);
     this->player->setPlaylist(playlist);
 
-    // Create a caption input
-    QLineEdit* caption_input = new QLineEdit(this);
-    caption_input->setObjectName("PostWindowCaptionInput");
-    caption_input->setPlaceholderText("Caption");
-    layout->addWidget(caption_input);
+    // Create a send like button
+    QPushButton* send_like_button = new QPushButton("Send Like", this);
+    send_like_button->setObjectName("PostWindowPostButton");
+    layout->addWidget(send_like_button);
 
-    // Create a post button
-    this->post_button = new QPushButton("Post", this);
-    this->post_button->setObjectName("PostWindowPostButton");
-    layout->addWidget(this->post_button);
-
-    // Connect handler for post button clicked
-    connect(this->post_button,
-            &QPushButton::clicked,
+    // Connect handler for header navigation clicked
+    connect(header,
+            &Header::rightButtonClicked,
             [this]()
             {
-                emit currentWindowUpdated(Window::FeedPost, Window::Capture);
+                emit currentWindowUpdated(Window::FeedPost, Window::React);
             });
 };
 
 void
-PostWindow::refresh()
+ReactWindow::refresh()
 {
     // Clear out the current playlist
     this->playlist->clear();
 
     // Add the temporary file as the media file
-    this->playlist->addMedia(QUrl::fromLocalFile(Store::temporary_file_name));
+    this->playlist->addMedia(QUrl("qrc:/" + Store::selected_post_url));
 
     // Update the playlist and set the player to start
     this->playlist->setCurrentIndex(0);
@@ -88,7 +82,7 @@ PostWindow::refresh()
 };
 
 void
-PostWindow::resizeVideoWidget(int parent_width, int parent_height)
+ReactWindow::resizeVideoWidget(int parent_width, int parent_height)
 {
     // Set default values
     int frame_radius = 16;
@@ -106,7 +100,7 @@ PostWindow::resizeVideoWidget(int parent_width, int parent_height)
 };
 
 void
-PostWindow::resizeFrame(int parent_width, int parent_height)
+ReactWindow::resizeFrame(int parent_width, int parent_height)
 {
     // Update the frame size
     this->frame->setFixedSize(parent_width, parent_height);
@@ -116,7 +110,7 @@ PostWindow::resizeFrame(int parent_width, int parent_height)
 };
 
 void
-PostWindow::resizeFrameContainer(int parent_width, int parent_height)
+ReactWindow::resizeFrameContainer(int parent_width, int parent_height)
 {
     // Update the frame container size
     this->frame_container->setFixedSize(parent_width - 24,
@@ -124,7 +118,7 @@ PostWindow::resizeFrameContainer(int parent_width, int parent_height)
 };
 
 void
-PostWindow::resizeEvent(QResizeEvent* event)
+ReactWindow::resizeEvent(QResizeEvent* event)
 {
     // Resize the frame container
     this->resizeFrameContainer(event->size().width(), event->size().height());
@@ -137,7 +131,7 @@ PostWindow::resizeEvent(QResizeEvent* event)
 };
 
 void
-PostWindow::paintEvent(QPaintEvent*)
+ReactWindow::paintEvent(QPaintEvent*)
 {
     QStyleOption style_option;
     style_option.init(this);

@@ -19,6 +19,7 @@ class Store
     static FeedMode feed_mode;
     static QVector<Post> posts;
     static QString temporary_file_name;
+    static QString selected_post_url;
     static void loadPosts();
 };
 

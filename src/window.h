@@ -8,6 +8,7 @@ enum Window
     FeedPre,
     FeedPost,
     PostScreen,
+    React,
     Unknown
 };
 

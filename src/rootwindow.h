@@ -19,6 +19,7 @@
 #include "feedprewindow.h"
 #include "feedpostwindow.h"
 #include "displaymode.h"
+#include "reactwindow.h"
 
 class RootWindow : public QMainWindow
 {
@@ -36,6 +37,7 @@ class RootWindow : public QMainWindow
     FeedPreWindow* feed_pre_window;
     FeedPostWindow* feed_post_window;
     PostWindow* post_window;
+    ReactWindow* react_window;
     QString qss_light_mode;
     QString qss_dark_mode;
     QString qss_light_high_contrast_mode;

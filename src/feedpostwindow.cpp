@@ -81,7 +81,8 @@ FeedPostWindow::paintPosts()
         post_header_layout->addWidget(post_header_time_label);
 
         // Create a post frame
-        QFrame* post_frame = new QFrame(this->scroll_area_widget);
+        QFrameClickable* post_frame =
+          new QFrameClickable(this->scroll_area_widget);
         post_frame->setObjectName("FeedWindowScrollAreaFrame");
         post_frame->setFixedSize(0, 0);
         this->scroll_area_layout->addWidget(post_frame);
@@ -118,6 +119,15 @@ FeedPostWindow::paintPosts()
         post_player->setVideoOutput(post_video_widget);
         post_player->setPlaylist(post_playlist);
         post_player->play();
+
+        // Connect handler for post button clicked
+        connect(post_frame,
+                &QFrameClickable::clicked,
+                [this, post]()
+                {
+                    Store::selected_post_url = post.post_url;
+                    emit currentWindowUpdated(Window::React, Window::FeedPost);
+                });
 
         // Create a post
         PostUi post_ui;
