@@ -3,6 +3,7 @@
 
 #include <QFile>
 #include <QString>
+#include <QDebug>
 #include <QTextStream>
 
 class Resource
