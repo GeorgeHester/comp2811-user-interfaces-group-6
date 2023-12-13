@@ -57,7 +57,7 @@ RootWindow::RootWindow(QWidget* parent)
 
     // Set the current window
     // this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
-    this->updateCurrentWindow(Window::Capture, Window::Unknown);
+    this->updateCurrentWindow(Window::FeedPre, Window::Unknown);
 
     // Connect the display mode updated listener
     connect(this->settings_window,

@@ -21,6 +21,7 @@ Header::Header(QString right_button_text, QWidget* parent)
   : QWidget(parent)
 {
     this->setObjectName("Header");
+    this->setFixedHeight(48);
 
     QBoxLayout* layout =
       new QBoxLayout(QBoxLayout::Direction::LeftToRight, this);

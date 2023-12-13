@@ -1,50 +1,25 @@
-QMainWindow#MainWindow {
-    background-color:#0d0d0d;
-}
+/*
+    Q WIDGET
+*/
 
-QWidget#SettingsWindow {
-    background-color:#0d0d0d;
-}
-
-#Header {
-    background-color:#0d0d0d;
+QWidget {
     margin:0px;
-    padding:0px;
 }
 
-#HeaderLogo {
-    font-family:"Plus Jakarta Sans";
-    font-size:18pt;
-    font-weight:700;
-    color:#f2f2f2;
-    margin-left:auto;
-    margin-top:12px;
-    margin-right:auto;
-    margin-bottom:12px;
-    padding:0px;
-}
-
-QLabel#SettingsWindowItemLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:12pt;
-    font-weight:500;
-    color:#f2f2f2;
-    margin-left:12px;
-    margin-top:24px;
-    margin-right:12px;
-    margin-bottom:6px;
-}
+/*
+    Q COMBO BOX
+*/
 
 QComboBox {
     font-family:"Plus Jakarta Sans";
     font-size:14pt;
     font-weight:500;
-    color:#f2f2f2;
+    color:#ffffff;
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
+    border-color:#ffff00;
+    background-color:#000000;
     margin-left:12px;
     margin-top:0px;
     margin-right:12px;
@@ -56,8 +31,13 @@ QComboBox {
     outline:none;
 }
 
+QComboBox:hover {
+    color:#000000;
+    background-color:#ffffff;
+}
+
 QComboBox:open {
-    border-color:#6fa1fe;
+    border-color:#ff00ff;
 }
 
 QComboBox::drop-down {
@@ -65,7 +45,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image:url(:/ui/icon/chevron-down-dark);
+    image:url(:/ui/icon/chevron-down-dark-high-contrast);
     width:14px;
     padding:0px;
     margin:0px;
@@ -76,8 +56,8 @@ QComboBox QAbstractItemView {
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-    background-color: #191919;
+    border-color:#ffff00;
+    background-color:#000000;
     margin:0px;
     padding:8px;
     outline:none;
@@ -87,53 +67,25 @@ QComboBox QAbstractItemView::item {
     border-radius:8px;
     border-width:2px;
     border-style:solid;
-    border-color:#191919;
-    background-color: #191919;
+    border-color:#ffff00;
+    background-color:#000000;
     margin:0px;
-    padding:4px;
+    padding:8px;
     outline:none;
 }
 
 QComboBox QAbstractItemView::item:hover {
-    background-color:#333333;
+    color:#000000;
+    background-color:#ffffff;
 }
 
 QComboBox QAbstractItemView::item:selected {
-    border-color:#6fa1fe;
+    border-color:#00ffff;
 }
 
-QSlider::groove:horizontal {
-	border-radius:4px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-	height:4px;
-	background-color:#6fa1fe;
-	margin:0px;
-	padding:0px;
-}
-
-QSlider::add-page:horizontal {
-	border-radius:4px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-	height:4px;
-	background-color:#f2f2f2;
-	margin:0px;
-	padding:0px;
-}
-
-QSlider::sub-page:horizontal {
-	border-radius:4px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-	height:4px;
-	background-color:#6fa1fe;
-	margin:0px;
-	padding:0px;
-}
+/*
+    Q SLIDER
+*/
 
 QSlider {
     margin-left:12px;
@@ -146,13 +98,282 @@ QSlider {
 QSlider::handle:horizontal {
     border-width:2px;
     border-style:solid;
-    border-color:#262626;
-	background-color:#191919;
+    border-color:#ffff00;
+	background-color:#000000;
     width:8px;
     margin:-4px -4px;
     border-radius:4px;
 }
 
 QSlider::handle:horizontal:hover{
-	background-color:#333333;
+    border-color:#ff00ff;
+	background-color:#ffffff;
+}
+
+QSlider::groove:horizontal {
+	border-radius:4px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffffff;
+	height:4px;
+	background-color:#ffff00;
+	margin:0px;
+	padding:0px;
+}
+
+QSlider::add-page:horizontal {
+	border-radius:4px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#191919;
+	height:4px;
+	background-color:#000000;
+	margin:0px;
+	padding:0px;
+}
+
+QSlider::sub-page:horizontal {
+	border-radius:4px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#191919;
+	height:4px;
+	background-color:#ffff00;
+	margin:0px;
+	padding:0px;
+}
+
+/*
+    Q PUSH BUTTON
+*/
+
+QPushButton {
+	font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:500;
+    color:#ffffff;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffff00;
+    background-color:#000000;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+    padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QPushButton:hover {
+    color:#000000;
+    background-color:#ffffff;
+}
+
+QPushButton:pressed {
+    border-color:#ff00ff;
+}
+
+QPushButton:flat {
+	background-color:transparent;
+}
+
+QPushButton:flat:hover {
+	color:#ff00ff;
+}
+
+QPushButton:disabled {
+    background-color:#ff0000;
+    border-color:#ff0000;
+    color:#ffffff;
+}
+
+/*
+    Q VIDEO WIDGET
+*/
+
+QVideoWidget {
+    background-color:#00ffff;
+}
+
+/*
+    Q LINE EDIT
+*/
+
+QLineEdit {
+    show-decoration-selected: 0;
+	font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:500;
+    color:#ffffff;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffff00;
+    background-color:#000000;
+    padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QLineEdit:hover {
+    color:#000000;
+    background-color:#ffffff;
+}
+
+QLineEdit:focus {
+    border-color:#ff00ff;
+    outline:none;
+}
+
+/*
+    HEADER
+ */
+
+QWidget#Header {
+    background-color:#000000;
+    margin:0px;
+    padding:0px;
+}
+
+QLabel#HeaderLogo {
+    font-family:"Plus Jakarta Sans";
+    font-size:18pt;
+    font-weight:700;
+    color:#ffffff;
+    margin-left:auto;
+    margin-top:12px;
+    margin-right:auto;
+    margin-bottom:12px;
+}
+
+/*
+    MAIN
+*/
+
+QMainWindow#MainWindow {
+    background-color:#000000;
+    margin:0px;
+}
+
+/*
+    SETTINGS WINDOW
+*/
+
+QLabel#SettingsWindowItemLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:12pt;
+    font-weight:500;
+    color:#ffffff;
+    margin-left:12px;
+    margin-top:24px;
+    margin-right:12px;
+    margin-bottom:6px;
+}
+
+QPushButton#SettingsWindowResetButton {
+    margin-top:24px;
+}
+
+/*
+    CAPTURE WINDOW
+*/
+
+QFrame#CaptureWindowFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffff00;
+    background-color:#00ffff;
+}
+
+QLabel#CaptureWindowCountdownLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:32pt;
+    font-weight:500;
+    color:#ffffff;
+    margin:12px;
+}
+
+QPushButton#CaptureWindowCaptureButton {
+    margin:12px;
+}
+
+/*
+    POST WINDOW
+*/
+
+QFrame#PostWindowFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffff00;
+    background-color:#00ffff;
+}
+
+QLineEdit#PostWindowCaptionInput {
+    margin-left:12px;
+    margin-top:12px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
+QPushButton#PostWindowPostButton {
+    margin:12px;
+}
+
+/*
+    FEED WINDOW
+*/
+
+QScrollArea#FeedWindowScrollArea {
+    margin:0px;
+    margin-bottom:12px;
+    margin-right:6px;
+}
+
+QScrollArea#FeedWindowScrollArea { background: transparent; }
+QScrollArea#FeedWindowScrollArea > QWidget > QWidget { background: transparent; }
+
+QFrame#FeedWindowScrollAreaFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#ffff00;
+    background-color:#00ffff;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
+QWidget#FeedWindowScrollAreaPostHeader {
+    margin-left:12px;
+    margin-top:24px;
+    margin-right:12px;
+    margin-bottom:6px;
+}
+
+QLabel#FeedWindowScrollAreaPostHeaderLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#ffffff;
+    margin:0px;
+}
+
+QLabel#FeedWindowScrollAreaPostCaptionLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#ffffff;
+    margin-left:12px;
+    margin-top:6px;
+    margin-right:12px;
+    margin-bottom:12px;
 }

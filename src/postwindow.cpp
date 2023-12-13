@@ -53,6 +53,12 @@ PostWindow::PostWindow(QWidget* parent)
     this->player->setVideoOutput(this->video_widget);
     this->player->setPlaylist(playlist);
 
+    // Create a caption input
+    QLineEdit* caption_input = new QLineEdit(this);
+    caption_input->setObjectName("PostWindowCaptionInput");
+    caption_input->setPlaceholderText("Caption");
+    layout->addWidget(caption_input);
+
     // Create a post button
     this->post_button = new QPushButton("Post", this);
     this->post_button->setObjectName("PostWindowPostButton");

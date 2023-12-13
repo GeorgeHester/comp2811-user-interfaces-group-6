@@ -1,44 +1,22 @@
+/*
+    Q WIDGET
+*/
+
 QWidget {
     margin:0px;
 }
 
-QMainWindow#MainWindow {
-    background-color:#0d0d0d;
+/*
+    Q LABEL
+*/
+
+QLabel {
     margin:0px;
 }
 
-QWidget#SettingsWindow {
-    background-color:#0d0d0d;
-}
-
-#Header {
-    background-color:#0d0d0d;
-    margin:0px;
-    padding:0px;
-}
-
-#HeaderLogo {
-    font-family:"Plus Jakarta Sans";
-    font-size:18pt;
-    font-weight:700;
-    color:#f2f2f2;
-    margin-left:auto;
-    margin-top:12px;
-    margin-right:auto;
-    margin-bottom:12px;
-    padding:0px;
-}
-
-QLabel#SettingsWindowItemLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:12pt;
-    font-weight:500;
-    color:#f2f2f2;
-    margin-left:12px;
-    margin-top:24px;
-    margin-right:12px;
-    margin-bottom:6px;
-}
+/*
+    Q COMBO BOX
+*/
 
 QComboBox {
     font-family:"Plus Jakarta Sans";
@@ -59,6 +37,10 @@ QComboBox {
     padding-right:8px;
     padding-bottom:4px;
     outline:none;
+}
+
+QComboBox:hover {
+    background-color:#333333;
 }
 
 QComboBox:open {
@@ -95,7 +77,7 @@ QComboBox QAbstractItemView::item {
     border-color:#191919;
     background-color: #191919;
     margin:0px;
-    padding:4px;
+    padding:8px;
     outline:none;
 }
 
@@ -105,6 +87,32 @@ QComboBox QAbstractItemView::item:hover {
 
 QComboBox QAbstractItemView::item:selected {
     border-color:#6fa1fe;
+}
+
+/*
+    Q SLIDER
+*/
+
+QSlider {
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:0px;
+    padding:0px;
+}
+
+QSlider::handle:horizontal {
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+	background-color:#191919;
+    width:8px;
+    margin:-4px -4px;
+    border-radius:4px;
+}
+
+QSlider::handle:horizontal:hover{
+	background-color:#333333;
 }
 
 QSlider::groove:horizontal {
@@ -140,27 +148,9 @@ QSlider::sub-page:horizontal {
 	padding:0px;
 }
 
-QSlider {
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:0px;
-    padding:0px;
-}
-
-QSlider::handle:horizontal {
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-	background-color:#191919;
-    width:8px;
-    margin:-4px -4px;
-    border-radius:4px;
-}
-
-QSlider::handle:horizontal:hover{
-	background-color:#333333;
-}
+/*
+    Q PUSH BUTTON
+*/
 
 QPushButton {
 	font-family:"Plus Jakarta Sans";
@@ -202,56 +192,9 @@ QPushButton:disabled {
     color:#808080;
 }
 
-QPushButton#SettingsWindowResetButton {
-    margin-top:24px;
-}
-
-QScrollArea#FeedWindowScrollArea {
-    margin:0px;
-    margin-bottom:12px;
-    margin-right:6px;
-}
-
-QScrollArea#FeedWindowScrollArea { background: transparent; }
-QScrollArea#FeedWindowScrollArea > QWidget > QWidget { background: transparent; }
-
-QFrame#FeedWindowScrollAreaFrame {
-    border-radius:16px;
-    border-width:2px;
-    border-style:solid;
-    border-color:#262626;
-    background-color:#191919;
-    margin-left:12px;
-    margin-top:0px;
-    margin-right:12px;
-    margin-bottom:0px;
-}
-
-QWidget#FeedWindowScrollAreaPostHeader {
-    margin-left:12px;
-    margin-top:24px;
-    margin-right:12px;
-    margin-bottom:6px;
-}
-
-QLabel#FeedWindowScrollAreaPostHeaderLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:14pt;
-    font-weight:700;
-    color:#f2f2f2;
-    margin:0px;
-}
-
-QLabel#FeedWindowScrollAreaPostCaptionLabel {
-    font-family:"Plus Jakarta Sans";
-    font-size:14pt;
-    font-weight:700;
-    color:#f2f2f2;
-    margin-left:12px;
-    margin-top:6px;
-    margin-right:12px;
-    margin-bottom:12px;
-}
+/*
+    Q SCROLL BAR
+*/
 
 QScrollBar:vertical {
     border-width:2px;
@@ -300,9 +243,98 @@ QScrollBar::sub-page:vertical
     background: none;
 }
 
+/*
+    Q VIDEO WIDGET
+*/
+
 QVideoWidget {
     background-color:#191919;
 }
+
+/*
+    Q LINE EDIT
+*/
+
+QLineEdit {
+    show-decoration-selected: 0;
+	font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:500;
+    color:#f2f2f2;
+    border-radius:8px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    padding-left:8px;
+    padding-top:4px;
+    padding-right:8px;
+    padding-bottom:4px;
+    outline:none;
+}
+
+QLineEdit:hover {
+    background-color:#333333;
+    outline:none;
+}
+
+QLineEdit:focus {
+    border-color:#6fa1fe;
+    outline:none;
+}
+
+/*
+    HEADER
+ */
+
+QWidget#Header {
+    background-color:#0d0d0d;
+    margin:0px;
+    padding:0px;
+}
+
+QLabel#HeaderLogo {
+    font-family:"Plus Jakarta Sans";
+    font-size:18pt;
+    font-weight:700;
+    color:#f2f2f2;
+    margin-left:auto;
+    margin-top:12px;
+    margin-right:auto;
+    margin-bottom:12px;
+}
+
+/*
+    MAIN
+*/
+
+QMainWindow#MainWindow {
+    background-color:#0d0d0d;
+    margin:0px;
+}
+
+/*
+    SETTINGS WINDOW
+*/
+
+QLabel#SettingsWindowItemLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:12pt;
+    font-weight:500;
+    color:#f2f2f2;
+    margin-left:12px;
+    margin-top:24px;
+    margin-right:12px;
+    margin-bottom:6px;
+}
+
+QPushButton#SettingsWindowResetButton {
+    margin-top:24px;
+}
+
+/*
+    CAPTURE WINDOW
+*/
 
 QFrame#CaptureWindowFrame {
     border-radius:16px;
@@ -324,6 +356,10 @@ QPushButton#CaptureWindowCaptureButton {
     margin:12px;
 }
 
+/*
+    POST WINDOW
+*/
+
 QFrame#PostWindowFrame {
     border-radius:16px;
     border-width:2px;
@@ -332,6 +368,64 @@ QFrame#PostWindowFrame {
     background-color:#191919;
 }
 
+QLineEdit#PostWindowCaptionInput {
+    margin-left:12px;
+    margin-top:12px;
+    margin-right:12px;
+    margin-bottom:0px;
+}
+
 QPushButton#PostWindowPostButton {
     margin:12px;
+}
+
+/*
+    FEED WINDOW
+*/
+
+/*
+QScrollArea#FeedWindowScrollArea {
+    margin:0px;
+}
+*/
+
+QScrollArea#FeedWindowScrollArea { background: transparent; }
+QScrollArea#FeedWindowScrollArea > QWidget > QWidget { background: transparent; }
+
+QFrame#FeedWindowScrollAreaFrame {
+    border-radius:16px;
+    border-width:2px;
+    border-style:solid;
+    border-color:#262626;
+    background-color:#191919;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:12px;
+}
+
+QWidget#FeedWindowScrollAreaHeader {
+    margin-left:12px;
+    margin-top:12px;
+    margin-right:12px;
+    margin-bottom:6px;
+}
+
+QLabel#FeedWindowScrollAreaHeaderLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#f2f2f2;
+    margin:0px;
+}
+
+QLabel#FeedWindowScrollAreaCaptionLabel {
+    font-family:"Plus Jakarta Sans";
+    font-size:14pt;
+    font-weight:700;
+    color:#f2f2f2;
+    margin-left:12px;
+    margin-top:0px;
+    margin-right:12px;
+    margin-bottom:12px;
 }

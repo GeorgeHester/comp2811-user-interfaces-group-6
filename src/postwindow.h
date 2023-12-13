@@ -11,6 +11,7 @@
 #include <QMediaPlaylist>
 #include <QMediaPlayer>
 #include <QPainterPath>
+#include <QLineEdit>
 
 #include "header.h"
 #include "window.h"

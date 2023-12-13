@@ -44,12 +44,10 @@ class FeedPreWindow : public QWidget
 
   protected:
     void paintPosts();
-    void resizeScrollArea(int window_width, int window_height);
+
     void resizePostBlanks(int parent_width, int parent_height);
-    void resizeFrameVideoWidget(int parent_width,
-                                int parent_height,
-                                QFrame* frame,
-                                QVideoWidget* video_widget);
+    void resizeScrollArea(int parent_width, int parent_height);
+
     void paintEvent(QPaintEvent*) override;
     void resizeEvent(QResizeEvent* event) override;
 };
