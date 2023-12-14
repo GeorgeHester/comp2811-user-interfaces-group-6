@@ -22,3 +22,7 @@ Refer to the [Contributing Guide](CONTRIBUTING.md) for detailed information on h
 # Video Conversion
 
 A [HandBreak](https://handbrake.fr) configuration file has been provided, named `hand-brake-vreal-output.json` this file provides the correct settings for the `.mp4` files used by VReal.
+
+# GitHub
+
+[Repository](https://github.com/GeorgeHesterLeeds/comp2811-user-interfaces-group-6)
