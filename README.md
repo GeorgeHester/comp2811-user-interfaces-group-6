@@ -18,3 +18,7 @@ VReal is an open source cross-platform* BeReal alternative that allows users to 
 # Developer Guide
 
 Refer to the [Contributing Guide](CONTRIBUTING.md) for detailed information on how to install VReal from source.
+
+# Video Conversion
+
+A [HandBreak](https://handbrake.fr) configuration file has been provided, named `hand-brake-vreal-output.json` this file provides the correct settings for the `.mp4` files used by VReal.
